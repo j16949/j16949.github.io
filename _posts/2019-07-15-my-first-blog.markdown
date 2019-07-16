@@ -46,3 +46,16 @@ p{ line-height: 170% }
 > 分页功能从名为 index.html 的 HTML 文件中被调用时，才能工作
 
 也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。
+
+### 三. 遇到的问题与解决办法
+
+1.在移动设备上滑动没有惯性
+
+&emsp;&emsp;在搭建完毕后发现在pad或者iphone上浏览此网页滑动非常生涩，没有惯性。之后google后发现是解决此问题需要在css中添加`webkit-overflow-scrolling: touch;`。由于此模板是fork的<a href="https://github.com/artemsheludko/adam-blog">adam-blog</a>的，不知道在哪个css模块添加合适，于是我就访问了adam-blog的github.io。但让我惊讶的是，他的网页滑动有惯性！那我就开始怀疑是我更改的哪个位置的代码产生了这个问题，于是我将自己fork的adam-blog的代码和我自己更改后的代码做对比，搜索touch，并没有搜到结果，也有发现问题。这个问题让我非常头大，耗费了近一个小时。最后在调试彼此的网页后发现，adam已经添加了`webkit-overflow-scrolling: touch;`。我错在是拿自己两年前fork的代码和自己更改的代码做的对比，这个BUG在去年修复的.......
+
+&emsp;&emsp;于是我又仔细浏览了adam最近做的修改，并应用的自己的网站上。总结:
+
+>如果是fork的别人的repo，要经常查看原作者做的改动！！！
+
+ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
+![截图]({{site.baseurl}}/assets/img/touch.png)

@@ -784,6 +784,7 @@ body {
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -953,7 +954,7 @@ pre code {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   color: #311e3e;
 }
 
@@ -981,6 +982,7 @@ pre code {
   color: #311e3e;
   -webkit-transition: all .4s;
   transition: all .4s;
+  padding: 10px;
 }
 
 .menu-icon:hover,
