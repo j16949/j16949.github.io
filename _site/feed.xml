@@ -1,5 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-15T21:45:08+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My page - Walter White</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><author><name>Walter White</name></author><entry><title type="html">lalala</title><link href="http://localhost:4000/lalala/" rel="alternate" type="text/html" title="lalala" /><published>2019-07-13T18:32:20+08:00</published><updated>2019-07-13T18:32:20+08:00</updated><id>http://localhost:4000/lalala</id><content type="html" xml:base="http://localhost:4000/lalala/">&lt;p&gt;dsfadsafasdfasdf
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-16T10:46:12+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My page - Walter White</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><author><name>Walter White</name></author><entry><title type="html">My first blog</title><link href="http://localhost:4000/my-first-blog/" rel="alternate" type="text/html" title="My first blog" /><published>2019-07-15T22:17:20+08:00</published><updated>2019-07-15T22:17:20+08:00</updated><id>http://localhost:4000/my-first-blog</id><content type="html" xml:base="http://localhost:4000/my-first-blog/">&lt;style type=&quot;text/css&quot;&gt;
+p{ line-height: 170% }
+&lt;/style&gt;
+
+&lt;blockquote&gt;
+  &lt;h3 id=&quot;我的博客终于搭建完毕了其中遇到了无数的问题不过结果依旧开心可喜可贺可喜可贺&quot;&gt;我的博客终于搭建完毕了，其中遇到了无数的问题，不过结果依旧开心，可喜可贺，可喜可贺！&lt;/h3&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+想想从以下几个方面总结一下博客的搭建吧：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Github创建项目与展示&lt;/li&gt;
+  &lt;li&gt;Jekyll安装配置与使用&lt;/li&gt;
+  &lt;li&gt;遇到的问题与解决办法&lt;/li&gt;
+  &lt;li&gt;感谢&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;一-github创建项目与展示&quot;&gt;一. Github创建项目与展示&lt;/h3&gt;
+
+&lt;p&gt;  首先，github为用户提供了一个终身免费的域名: username.github.io，可以利用这个域名搭建自己的博客&lt;br /&gt;
+  其次，github下的repositories也可以展示为网页。方法是点击要展示的repository-&amp;gt;Settings-&amp;gt;GitHub Pages-&amp;gt;Source下选择master branch。&lt;br /&gt;
+  由于github.io是基于jekyll的，所以接下来我们需要学习如何用jekyll搭建一个网站&lt;/p&gt;
+
+&lt;h3 id=&quot;二-jekyll安装配置与使用&quot;&gt;二. Jekyll安装配置与使用&lt;/h3&gt;
+
+&lt;p&gt;1.Jekyll的安装配置&lt;/p&gt;
+
+&lt;p&gt;  基本可以参考Jekyll的官方网站 https://jekyllrb.com/ 其对应的中文网站 http://jekyllcn.com/ （但是这个中文网站的版本落后于英文官网，从其右侧布局可以看出，但依然很有参考价值）还有一个中文网站不做推荐，因为翻译不太完整 https://www.jekyll.com.cn/docs/&lt;/p&gt;
+
+&lt;p&gt;  安装Jekyll 因为Jekyll is a Ruby Gem。所以需要依次安装Ruby,Jekyll和bundler&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt install ruby-full
+gem install jekyll bundler
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;  然后我们可以开始新建一个Jekyll博客，或者FORK一个优秀的模板。FORK时需要注意对方Gemfile里的plugins,使用&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;来安装所有需要的plugins，然后&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;即可开启服务，如需开启多个jekyll serve 可加&lt;code class=&quot;highlighter-rouge&quot;&gt;--port xxxx&lt;/code&gt;指定端口&lt;/p&gt;
+
+&lt;p&gt;2.Jekyll的使用&lt;/p&gt;
+
+&lt;p&gt;  使用具体可以参考官网的教程。我这里说说我遇到的几个问题。首先我是想用这github.io搭建一个类似与导航的首页，其次可以兼顾BLOG的功能。这就牵扯到一个问题，jekyll的分页只支持在index.html下进行，如果想用网址访问首页（不加\xxx）则BLOG主页无法完成分页展示所有BOLG的功能。所以当时我的第一考虑是再搭建一个repository，这样BLOG使用github.io/blog。但是发现这样会出现一个bug，点击下一页，出现404。这个问题困扰了我很久，后来经过多次google，并再次翻阅官方文档，发现：&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;分页功能从名为 index.html 的 HTML 文件中被调用时，才能工作&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。&lt;/p&gt;</content><author><name>Walter White</name></author><category term="Blog" /><category term="Mountains" /><category term="jekyll" /><summary type="html"></summary></entry><entry><title type="html">lalala</title><link href="http://localhost:4000/lalala/" rel="alternate" type="text/html" title="lalala" /><published>2019-07-13T18:32:20+08:00</published><updated>2019-07-13T18:32:20+08:00</updated><id>http://localhost:4000/lalala</id><content type="html" xml:base="http://localhost:4000/lalala/">&lt;p&gt;dsfadsafasdfasdf
 asdf
 asdf
 asdf

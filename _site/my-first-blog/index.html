@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>I meet the sunset - My page - Walter White</title>
-	<meta name="description" content="You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes.">
+	<title>My first blog - My page - Walter White</title>
+	<meta name="description" content="I have finally finished buliding my website,WOW!">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
@@ -52,28 +52,60 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/post-2.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/sun_behind_the_mountain.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">I meet the sunset</h1>
-          <div class="page-date"><time datetime="2017-08-24 18:32:20 +0800">2017, Aug 24</time></div>
+          <h1 class="page-title">My first blog</h1>
+          <div class="page-date"><time datetime="2019-07-15 22:17:20 +0800">2019, Jul 15</time></div>
         </div>
-        <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+        <style type="text/css">
+p{ line-height: 170% }
+</style>
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<blockquote>
+  <h3 id="我的博客终于搭建完毕了其中遇到了无数的问题不过结果依旧开心可喜可贺可喜可贺">我的博客终于搭建完毕了，其中遇到了无数的问题，不过结果依旧开心，可喜可贺，可喜可贺！</h3>
+</blockquote>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p><br />
+<br />
+想想从以下几个方面总结一下博客的搭建吧：</p>
+<ol>
+  <li>Github创建项目与展示</li>
+  <li>Jekyll安装配置与使用</li>
+  <li>遇到的问题与解决办法</li>
+  <li>感谢</li>
+</ol>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+<h3 id="一-github创建项目与展示">一. Github创建项目与展示</h3>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+<p>  首先，github为用户提供了一个终身免费的域名: username.github.io，可以利用这个域名搭建自己的博客<br />
+  其次，github下的repositories也可以展示为网页。方法是点击要展示的repository-&gt;Settings-&gt;GitHub Pages-&gt;Source下选择master branch。<br />
+  由于github.io是基于jekyll的，所以接下来我们需要学习如何用jekyll搭建一个网站</p>
 
+<h3 id="二-jekyll安装配置与使用">二. Jekyll安装配置与使用</h3>
+
+<p>1.Jekyll的安装配置</p>
+
+<p>  基本可以参考Jekyll的官方网站 https://jekyllrb.com/ 其对应的中文网站 http://jekyllcn.com/ （但是这个中文网站的版本落后于英文官网，从其右侧布局可以看出，但依然很有参考价值）还有一个中文网站不做推荐，因为翻译不太完整 https://www.jekyll.com.cn/docs/</p>
+
+<p>  安装Jekyll 因为Jekyll is a Ruby Gem。所以需要依次安装Ruby,Jekyll和bundler</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install ruby-full
+gem install jekyll bundler
+</code></pre></div></div>
+
+<p>  然后我们可以开始新建一个Jekyll博客，或者FORK一个优秀的模板。FORK时需要注意对方Gemfile里的plugins,使用<code class="highlighter-rouge">bundle install</code>来安装所有需要的plugins，然后<code class="highlighter-rouge">bundle exec jekyll serve</code>即可开启服务，如需开启多个jekyll serve 可加<code class="highlighter-rouge">--port xxxx</code>指定端口</p>
+
+<p>2.Jekyll的使用</p>
+
+<p>  使用具体可以参考官网的教程。我这里说说我遇到的几个问题。首先我是想用这github.io搭建一个类似与导航的首页，其次可以兼顾BLOG的功能。这就牵扯到一个问题，jekyll的分页只支持在index.html下进行，如果想用网址访问首页（不加\xxx）则BLOG主页无法完成分页展示所有BOLG的功能。所以当时我的第一考虑是再搭建一个repository，这样BLOG使用github.io/blog。但是发现这样会出现一个bug，点击下一页，出现404。这个问题困扰了我很久，后来经过多次google，并再次翻阅官方文档，发现：</p>
+<blockquote>
+  <p>分页功能从名为 index.html 的 HTML 文件中被调用时，才能工作</p>
+</blockquote>
+
+<p>也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。</p>
 
         <div class="page-footer">
           <div class="page-tag">
@@ -81,14 +113,16 @@
             
             <a href="/tags#Blog" class="tag">| Blog</a>
             
-            <a href="/tags#Sunset" class="tag">| Sunset</a>
+            <a href="/tags#Mountains" class="tag">| Mountains</a>
+            
+            <a href="/tags#jekyll" class="tag">| jekyll</a>
             
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=I meet the sunset&url=http://localhost:4000/i-meet-the-sunset/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/i-meet-the-sunset/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/i-meet-the-sunset/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=My first blog&url=http://localhost:4000/my-first-blog/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/my-first-blog/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/my-first-blog/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">

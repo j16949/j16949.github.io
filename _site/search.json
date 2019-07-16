@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "My first blog",
+      "category" : "",
+      "tags"     : "Blog, Mountains, jekyll",
+      "url"      : "/my-first-blog/",
+      "date"     : "2019-07-15 22:17:20 +0800"
+    } ,
+  
+    {
       "title"    : "lalala",
       "category" : "",
       "tags"     : "Blog, Meditation",
