@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-17T06:50:52+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My page - Walter White</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-20T20:41:38+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My page - Walter White</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </subtitle><author><name>Walter White</name></author><entry><title type="html">My first blog</title><link href="http://localhost:4000/my-first-blog/" rel="alternate" type="text/html" title="My first blog" /><published>2019-07-15T22:17:20+08:00</published><updated>2019-07-15T22:17:20+08:00</updated><id>http://localhost:4000/my-first-blog</id><content type="html" xml:base="http://localhost:4000/my-first-blog/">&lt;style type=&quot;text/css&quot;&gt;
 p{ line-height: 170% }
 &lt;/style&gt;
@@ -10,19 +10,22 @@ p{ line-height: 170% }
 &lt;p&gt;&lt;br /&gt;
 &lt;br /&gt;
 想想从以下几个方面总结一下博客的搭建吧：&lt;/p&gt;
+
 &lt;ol&gt;
-  &lt;li&gt;Github创建项目与展示&lt;/li&gt;
-  &lt;li&gt;Jekyll安装配置与使用&lt;/li&gt;
-  &lt;li&gt;遇到的问题与解决办法&lt;/li&gt;
-  &lt;li&gt;感谢&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title1&quot;&gt;Github创建项目与展示&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title2&quot;&gt;Jekyll安装配置与使用&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title3&quot;&gt;遇到的问题与解决办法&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title4&quot;&gt;感谢&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;&lt;span id=&quot;title1&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&quot;一-github创建项目与展示&quot;&gt;一. Github创建项目与展示&lt;/h3&gt;
 
 &lt;p&gt;  首先，github为用户提供了一个终身免费的域名: username.github.io，可以利用这个域名搭建自己的博客&lt;br /&gt;
   其次，github下的repositories也可以展示为网页。方法是点击要展示的repository-&amp;gt;Settings-&amp;gt;GitHub Pages-&amp;gt;Source下选择master branch。&lt;br /&gt;
   由于github.io是基于jekyll的，所以接下来我们需要学习如何用jekyll搭建一个网站&lt;/p&gt;
 
+&lt;p&gt;&lt;span id=&quot;title2&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&quot;二-jekyll安装配置与使用&quot;&gt;二. Jekyll安装配置与使用&lt;/h3&gt;
 
 &lt;p&gt;1.Jekyll的安装配置&lt;/p&gt;
@@ -46,6 +49,7 @@ gem install jekyll bundler
 
 &lt;p&gt;也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。&lt;/p&gt;
 
+&lt;p&gt;&lt;span id=&quot;title3&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&quot;三-遇到的问题与解决办法&quot;&gt;三. 遇到的问题与解决办法&lt;/h3&gt;
 
 &lt;p&gt;1.在移动设备上滑动没有惯性&lt;/p&gt;
@@ -59,7 +63,12 @@ gem install jekyll bundler
 &lt;/blockquote&gt;
 
 &lt;p&gt;ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
-&lt;img src=&quot;/assets/img/touch.png&quot; alt=&quot;截图&quot; /&gt;&lt;/p&gt;</content><author><name>Walter White</name></author><category term="Blog" /><category term="Mountains" /><category term="jekyll" /><summary type="html"></summary></entry><entry><title type="html">lalala</title><link href="http://localhost:4000/lalala/" rel="alternate" type="text/html" title="lalala" /><published>2019-07-13T18:32:20+08:00</published><updated>2019-07-13T18:32:20+08:00</updated><id>http://localhost:4000/lalala</id><content type="html" xml:base="http://localhost:4000/lalala/">&lt;p&gt;dsfadsafasdfasdf
+&lt;img src=&quot;/assets/img/touch.png&quot; alt=&quot;截图&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span id=&quot;title4&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;四感谢&quot;&gt;四.感谢&lt;/h3&gt;
+
+&lt;p&gt;  首先感谢adam，因为模板是fork自&lt;a href=&quot;https://github.com/artemsheludko/adam-blog&quot;&gt;adam-blog&lt;/a&gt;的。感谢欢，是她一直陪伴着我，从搭建这个网站到这篇博客，感谢她时刻给予我的鼓励。感谢平，是他的一句玩笑话“你的网站毫无ui”，因此，我才将原来一个html扩展到现在的主页+博客。&lt;/p&gt;</content><author><name>Walter White</name></author><category term="Blog" /><category term="Mountains" /><category term="jekyll" /><summary type="html"></summary></entry><entry><title type="html">lalala</title><link href="http://localhost:4000/lalala/" rel="alternate" type="text/html" title="lalala" /><published>2019-07-13T18:32:20+08:00</published><updated>2019-07-13T18:32:20+08:00</updated><id>http://localhost:4000/lalala</id><content type="html" xml:base="http://localhost:4000/lalala/">&lt;p&gt;dsfadsafasdfasdf
 asdf
 asdf
 asdf

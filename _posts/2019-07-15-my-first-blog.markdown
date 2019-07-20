@@ -16,17 +16,21 @@ p{ line-height: 170% }
 <br>
 <br>
 想想从以下几个方面总结一下博客的搭建吧：
-1. Github创建项目与展示
-2. Jekyll安装配置与使用
-3. 遇到的问题与解决办法
-4. 感谢
 
+1. [Github创建项目与展示](#title1)
+2. [Jekyll安装配置与使用](#title2)
+3. [遇到的问题与解决办法](#title3)
+4. [感谢](#title4)
+
+
+<span id="title1"></span>
 ### 一. Github创建项目与展示
 
 &emsp;&emsp;首先，github为用户提供了一个终身免费的域名: username.github.io，可以利用这个域名搭建自己的博客  
 &emsp;&emsp;其次，github下的repositories也可以展示为网页。方法是点击要展示的repository->Settings->GitHub Pages->Source下选择master branch。  
 &emsp;&emsp;由于github.io是基于jekyll的，所以接下来我们需要学习如何用jekyll搭建一个网站
 
+<span id="title2"></span>
 ### 二. Jekyll安装配置与使用
 
 1.Jekyll的安装配置
@@ -47,6 +51,7 @@ p{ line-height: 170% }
 
 也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。
 
+<span id="title3"></span>
 ### 三. 遇到的问题与解决办法
 
 1.在移动设备上滑动没有惯性
@@ -59,3 +64,9 @@ p{ line-height: 170% }
 
 ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
 ![截图]({{site.baseurl}}/assets/img/touch.png)
+
+<span id="title4"></span>
+### 四.感谢
+
+&emsp;&emsp;首先感谢adam，因为模板是fork自<a href="https://github.com/artemsheludko/adam-blog">adam-blog</a>的。感谢欢，是她一直陪伴着我，从搭建这个网站到这篇博客，感谢她时刻给予我的鼓励。感谢平，是他的一句玩笑话“你的网站毫无ui”，因此，我才将原来一个html扩展到现在的主页+博客。
+
