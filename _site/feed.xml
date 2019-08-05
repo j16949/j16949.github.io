@@ -1,5 +1,234 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-20T20:41:38+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My page - Walter White</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><author><name>Walter White</name></author><entry><title type="html">My first blog</title><link href="http://localhost:4000/my-first-blog/" rel="alternate" type="text/html" title="My first blog" /><published>2019-07-15T22:17:20+08:00</published><updated>2019-07-15T22:17:20+08:00</updated><id>http://localhost:4000/my-first-blog</id><content type="html" xml:base="http://localhost:4000/my-first-blog/">&lt;style type=&quot;text/css&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-05T22:06:56+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My page - Walter White</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><author><name>Walter White</name></author><entry><title type="html">交换机MAC地址查询总结</title><link href="http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="交换机MAC地址查询总结" /><published>2019-08-02T19:17:20+08:00</published><updated>2019-08-02T19:17:20+08:00</updated><id>http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/">&lt;style type=&quot;text/css&quot;&gt;
+p{ line-height: 170% }
+&lt;/style&gt;
+
+&lt;blockquote&gt;
+  &lt;h3 id=&quot;由于工作中经常需要查询设备mac以定位设备或解决问题因此总结一下mac查找办法&quot;&gt;由于工作中经常需要查询设备mac，以定位设备或解决问题，因此总结一下mac查找办法。&lt;/h3&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+导航：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#title1&quot;&gt;huawei&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title2&quot;&gt;h3c&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title3&quot;&gt;cisco&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title4&quot;&gt;通用&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;span id=&quot;title1&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一-huawei&quot;&gt;一. huawei&lt;/h3&gt;
+
+&lt;p&gt;	&lt;strong&gt;1、查看系统MAC&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+	1）盒式交换机：&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;S5700&amp;gt;&lt;font style=&quot;color: #0000ff&quot;&gt;display bridge mac-add &lt;/font&gt;&lt;br /&gt;
+	System bridge MAC address: xxxx-xxxx-xxxx&lt;/p&gt;
+&lt;p&gt;
+	2）框式交换机：&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;S9303&amp;gt;&lt;font style=&quot;color: #0000ff&quot;&gt;display system-mac &lt;/font&gt;&lt;br /&gt;
+	MAC-num&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; :1&lt;br /&gt;
+	Index&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; MAC Addr&lt;br /&gt;
+	----------------------------&lt;br /&gt;
+	default&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; xxxx-xxxx-xxxx&lt;br /&gt;
+	&lt;br /&gt;
+	current&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; xxxx-xxxx-xxxx&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;2、查看接口MAC&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;S5700&amp;gt;&lt;font style=&quot;color: #0000ff&quot;&gt;display interface GigabitEthernet0/0/10 &lt;/font&gt;&lt;br /&gt;
+	GigabitEthernet0/0/10 current state : UP&lt;br /&gt;
+	Line protocol current state : UP&lt;br /&gt;
+	Description:&lt;br /&gt;
+	Switch Port, Link-type : trunk(configured),&lt;br /&gt;
+	PVID :&amp;nbsp;&amp;nbsp;&amp;nbsp; 1, TPID : 8100(Hex), The Maximum Frame Length is 1600&lt;br /&gt;
+	IP Sending Frames&amp;#39; Format is PKTFMT_ETHNT_2, &lt;font style=&quot;color: #0000ff&quot;&gt;Hardware address is xxxx-xxxx-xxxx &lt;/font&gt;&lt;br /&gt;
+	Current system time: 2015-03-02 10:50:43+08:00&lt;br /&gt;
+	Port Mode: COMMON COPPER&lt;br /&gt;
+	Speed : 1000,&amp;nbsp;&amp;nbsp; Loopback: INTERNAL&lt;br /&gt;
+	Duplex: FULL,&amp;nbsp;&amp;nbsp; Negotiation: DISABLE&lt;br /&gt;
+	Mdi&amp;nbsp;&amp;nbsp; : AUTO,&amp;nbsp;&amp;nbsp; Flow-control: DISABLE&lt;br /&gt;
+	Last 300 seconds input rate 480 bits/sec, 0 packets/sec&lt;br /&gt;
+	Last 300 seconds output rate 480 bits/sec, 0 packets/sec&lt;br /&gt;
+	Input peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47&lt;br /&gt;
+	Output peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47&lt;br /&gt;
+	Input:&amp;nbsp; 510225 packets, 80014227 bytes&lt;br /&gt;
+	&amp;nbsp; Unicast:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0,&amp;nbsp; Multicast:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 510225&lt;br /&gt;
+	&amp;nbsp; Broadcast:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0,&amp;nbsp; Jumbo:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&lt;br /&gt;
+	&amp;nbsp; Discard:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0,&amp;nbsp; Pause:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&lt;br /&gt;
+	&amp;nbsp; Frames:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&lt;br /&gt;
+	&lt;br /&gt;
+	&amp;nbsp; Total Error:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&lt;br /&gt;
+	&amp;nbsp; CRC:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0,&amp;nbsp; Giants:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&lt;br /&gt;
+	&amp;nbsp; Jabbers:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0,&amp;nbsp; Fragments:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&lt;br /&gt;
+	&amp;nbsp; Runts:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0,&amp;nbsp; DropEvents:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&lt;br /&gt;
+	&amp;nbsp; ---- More ----&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;3、查看设备学习到的mac表项&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+	1）查看整机所有类型mac地址表项：&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;S5700&amp;gt;&lt;font style=&quot;color: #0000ff&quot;&gt;display mac-address&amp;nbsp;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;
+	2）查看某端口下mac地址表项：&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;S5700&amp;gt;&lt;font style=&quot;color: #0000ff&quot;&gt;display mac-address GigabitEthernet 0/0/X&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;
+	3）查看系统所有动态MAC地址表项：&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;S5700&amp;gt;&lt;font style=&quot;color: #0000ff&quot;&gt;display mac-address dynamic &lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;
+	此处dynamic可以替换为blackhole、static、security、sticky、summary分别查看黑洞MAC、静态MAC、安全动态MAC、sticky MAC、MAC表项汇总信息。&lt;/p&gt;
+&lt;p&gt;
+	由于内容较多，此处不再赘述；&lt;/p&gt;
+&lt;p&gt;
+	欲了解更多MAC相关命令，请下载产品文档，在如下路径获取更多信息：参考&amp;mdash;&amp;mdash;以太网交换命令&amp;mdash;&amp;mdash;MAC表配置命令。&lt;/p&gt;
+
+&lt;p&gt;&lt;span id=&quot;title2&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;二-h3c&quot;&gt;二. h3c&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1.查看系统mac&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;h3c&amp;gt;&lt;font style=&quot;color: #0000ff&quot;&gt;dis device manuinfo&lt;/font&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.查看接口mac&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;h3c&amp;gt;&lt;font style=&quot;color: #0000ff&quot;&gt;dis int vlanif 2&lt;/font&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;用Wireshark抓包，当数据包跨网段时，source mac时常就是interface vlanif的地址(网关地址)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;span id=&quot;title3&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;三-cisco&quot;&gt;三. cisco&lt;/h3&gt;
+
+&lt;p&gt;1.待补充&lt;/p&gt;
+
+&lt;p&gt;&lt;span id=&quot;title4&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;四通用&quot;&gt;四.通用&lt;/h3&gt;
+
+&lt;p&gt;  ！！！注意：当一台设备未通过802.1x认证，其mac无法显示在&lt;code class=&quot;highlighter-rouge&quot;&gt;dis mac-address&lt;/code&gt;中，除非配置了guest-vlan，其显示在vlan 800中(待验证)&lt;/p&gt;</content><author><name>Walter White</name></author><category term="Blog" /><category term="switch" /><category term="huawei" /><category term="h3c" /><category term="cisco" /><summary type="html"></summary></entry><entry><title type="html">Linux bash vim code 个人使用技巧总结</title><link href="http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="Linux bash vim code 个人使用技巧总结" /><published>2019-07-31T10:17:20+08:00</published><updated>2019-07-31T10:17:20+08:00</updated><id>http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">&lt;style type=&quot;text/css&quot;&gt;
+p{ line-height: 170% }
+&lt;/style&gt;
+
+&lt;blockquote&gt;
+  &lt;h3 id=&quot;工欲善其事必先利其器本文总结一下平时bash和vim等使用的技巧吧&quot;&gt;工欲善其事，必先利其器。本文总结一下平时bash和vim等使用的技巧吧。&lt;/h3&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+导航：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#title1&quot;&gt;复制文件或内容&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title2&quot;&gt;实用快捷键&lt;/a&gt;
+&lt;!-- 3. [遇到的问题与解决办法](#title3)--&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title4&quot;&gt;感谢&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;span id=&quot;title1&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一-复制文件或内容&quot;&gt;一. 复制文件或内容&lt;/h3&gt;
+
+&lt;p&gt;1.复制文件&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cp fileA fileB&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vim fileB&lt;/code&gt;,然后输入ESC+’:’,&lt;code class=&quot;highlighter-rouge&quot;&gt;r fileA&lt;/code&gt;(即把fileA内容read到fileB)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vim -o fileA fileB&lt;/code&gt;（同时编辑两个文件) ,y+G全部复制,ctrl+w,按方向键选择fileA或fileB,p粘贴&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2.复制内容&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vim fileA&lt;/code&gt;,按v进入visual模式，移动方向键，然后y复制&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;y+W复制单词，y+$复制到行尾，y+G复制到文件末尾&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;span id=&quot;title2&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;二-实用快捷键&quot;&gt;二. 实用快捷键&lt;/h3&gt;
+
+&lt;p&gt;1.Ctrl+d 选择下一个相同元素(code,sublime可用)&lt;/p&gt;
+
+&lt;!-- &amp;emsp;&amp;emsp;基本可以参考Jekyll的官方网站 https://jekyllrb.com/ 其对应的中文网站 http://jekyllcn.com/ （但是这个中文网站的版本落后于英文官网，从其右侧布局可以看出，但依然很有参考价值）还有一个中文网站不做推荐，因为翻译不太完整 https://www.jekyll.com.cn/docs/
+
+&amp;emsp;&amp;emsp;安装Jekyll 因为Jekyll is a Ruby Gem。所以需要依次安装Ruby,Jekyll和bundler
+
+    sudo apt install ruby-full
+    gem install jekyll bundler
+
+&amp;emsp;&amp;emsp;然后我们可以开始新建一个Jekyll博客，或者FORK一个优秀的模板。FORK时需要注意对方Gemfile里的plugins,使用`bundle install`来安装所有需要的plugins，然后`bundle exec jekyll serve`即可开启服务，如需开启多个jekyll serve 可加`--port xxxx`指定端口
+
+    dddd
+    dddd
+
+2.Jekyll的使用
+
+&amp;emsp;&amp;emsp;使用具体可以参考官网的教程。我这里说说我遇到的几个问题。首先我是想用这github.io搭建一个类似与导航的首页，其次可以兼顾BLOG的功能。这就牵扯到一个问题，jekyll的分页只支持在index.html下进行，如果想用网址访问首页（不加\xxx）则BLOG主页无法完成分页展示所有BOLG的功能。所以当时我的第一考虑是再搭建一个repository，这样BLOG使用github.io/blog。但是发现这样会出现一个bug，点击下一页，出现404。这个问题困扰了我很久，后来经过多次google，并再次翻阅官方文档，发现：
+&gt; 分页功能从名为 index.html 的 HTML 文件中被调用时，才能工作
+
+也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。
+
+&lt;span id=&quot;title3&quot;&gt;&lt;/span&gt;
+### 三. 遇到的问题与解决办法
+
+1.在移动设备上滑动没有惯性
+
+&amp;emsp;&amp;emsp;在搭建完毕后发现在pad或者iphone上浏览此网页滑动非常生涩，没有惯性。之后google后发现是解决此问题需要在css中添加`webkit-overflow-scrolling: touch;`。由于此模板是fork的&lt;a href=&quot;https://github.com/artemsheludko/adam-blog&quot;&gt;adam-blog&lt;/a&gt;的，不知道在哪个css模块添加合适，于是我就访问了adam-blog的github.io。但让我惊讶的是，他的网页滑动有惯性！那我就开始怀疑是我更改的哪个位置的代码产生了这个问题，于是我将自己fork的adam-blog的代码和我自己更改后的代码做对比，搜索touch，并没有搜到结果，也有发现问题。这个问题让我非常头大，耗费了近一个小时。最后在调试彼此的网页后发现，adam已经添加了`webkit-overflow-scrolling: touch;`。我错在是拿自己两年前fork的代码和自己更改的代码做的对比，这个BUG在去年修复的.......
+
+&amp;emsp;&amp;emsp;于是我又仔细浏览了adam最近做的修改，并应用的自己的网站上。总结:
+
+&gt;如果是fork的别人的repo，要经常查看原作者做的改动！！！
+
+ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
+![截图](/assets/img/touch.png) --&gt;
+
+&lt;p&gt;&lt;span id=&quot;title4&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;四关于本篇博客&quot;&gt;四.关于本篇博客&lt;/h3&gt;
+
+&lt;p&gt;可以看到最上方的图片使用了词云,代码如下：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#wordCloud.py
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;jieba&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wordcloud&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt;  &lt;span class=&quot;nn&quot;&gt;imageio&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imread&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#中文
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'''mask=imread('fivestart.jpg')
+f=open('新时代中国特色社会主义.txt','r',encoding='utf-8')
+t=f.read()
+f.close()
+ls=jieba.lcut(t)
+txt=' '.join(ls)
+w=wordcloud.WordCloud(font_path='msyh.ttc',max_words=99,mask=mask,background_color='white')
+w.generate(txt)
+w.to_file('grwordcloud.png')'''&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#英文
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'sun.jpg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#f=open('words.txt','r')
+#t=f.read()
+#f.close()
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Linux,bash,vim,code'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wordcloud&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WordCloud&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;background_color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'white'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collocations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;repeat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'wordcloud.jpg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;!!!如果想让一个词重复多次，需要设置 &lt;code class=&quot;highlighter-rouge&quot;&gt;wordcloud.WordCloud(repeat=True)&lt;/code&gt; !!!&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Walter White</name></author><category term="Blog" /><category term="Linux" /><category term="bash" /><category term="vim" /><category term="code" /><summary type="html"></summary></entry><entry><title type="html">My first blog</title><link href="http://localhost:4000/my-first-blog/" rel="alternate" type="text/html" title="My first blog" /><published>2019-07-15T22:17:20+08:00</published><updated>2019-07-15T22:17:20+08:00</updated><id>http://localhost:4000/my-first-blog</id><content type="html" xml:base="http://localhost:4000/my-first-blog/">&lt;style type=&quot;text/css&quot;&gt;
 p{ line-height: 170% }
 &lt;/style&gt;
 

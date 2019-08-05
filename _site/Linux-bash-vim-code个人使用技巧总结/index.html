@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Linux bash vim code 个人使用技巧总结 - My page - Walter White</title>
+	<meta name="description" content="I have finally finished buliding my website,WOW!">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-touch-icon-114x114.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#311e3e">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#311e3e">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#311e3e">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+  <div class="flex-container">
+  <header class="main-header">
+  <div class="wrapper">
+    <div class="header-flex">
+      <div class="menu-icon-container">
+        <span class="menu-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+      </div>
+      <nav class="main-nav">
+        <span class="menu-icon-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+      <p class="logo"><a href="/">Walter White</a></p>
+      <div class="search-icon-container">
+        <span class="search-icon"><a><i class="fa fa-search" aria-hidden="true"></i></a></span>
+      </div>
+    </div>
+  </div>
+</header> <!-- End Header -->
+
+  <article class="article-page">
+    <div class="page-image">
+      <div class="cover-image" style="background: url(/assets/img/wordcloud.jpg) center no-repeat; background-size: cover;"></div>
+    </div>
+    <div class="wrapper">
+      <div class="page-content">
+        <div class="header-page">
+          <h1 class="page-title">Linux bash vim code 个人使用技巧总结</h1>
+          <div class="page-date"><time datetime="2019-07-31 10:17:20 +0800">2019, Jul 31</time></div>
+        </div>
+        <style type="text/css">
+p{ line-height: 170% }
+</style>
+
+<blockquote>
+  <h3 id="工欲善其事必先利其器本文总结一下平时bash和vim等使用的技巧吧">工欲善其事，必先利其器。本文总结一下平时bash和vim等使用的技巧吧。</h3>
+</blockquote>
+
+<p><br />
+<br />
+导航：</p>
+
+<ol>
+  <li><a href="#title1">复制文件或内容</a></li>
+  <li><a href="#title2">实用快捷键</a>
+<!-- 3. [遇到的问题与解决办法](#title3)--></li>
+  <li><a href="#title4">感谢</a></li>
+</ol>
+
+<p><span id="title1"></span></p>
+<h3 id="一-复制文件或内容">一. 复制文件或内容</h3>
+
+<p>1.复制文件</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">cp fileA fileB</code></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">vim fileB</code>,然后输入ESC+’:’,<code class="highlighter-rouge">r fileA</code>(即把fileA内容read到fileB)</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">vim -o fileA fileB</code>（同时编辑两个文件) ,y+G全部复制,ctrl+w,按方向键选择fileA或fileB,p粘贴</p>
+  </li>
+</ul>
+
+<p>2.复制内容</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">vim fileA</code>,按v进入visual模式，移动方向键，然后y复制</p>
+  </li>
+  <li>
+    <p>y+W复制单词，y+$复制到行尾，y+G复制到文件末尾</p>
+  </li>
+</ul>
+
+<p><span id="title2"></span></p>
+<h3 id="二-实用快捷键">二. 实用快捷键</h3>
+
+<p>1.Ctrl+d 选择下一个相同元素(code,sublime可用)</p>
+
+<!-- &emsp;&emsp;基本可以参考Jekyll的官方网站 https://jekyllrb.com/ 其对应的中文网站 http://jekyllcn.com/ （但是这个中文网站的版本落后于英文官网，从其右侧布局可以看出，但依然很有参考价值）还有一个中文网站不做推荐，因为翻译不太完整 https://www.jekyll.com.cn/docs/
+
+&emsp;&emsp;安装Jekyll 因为Jekyll is a Ruby Gem。所以需要依次安装Ruby,Jekyll和bundler
+
+    sudo apt install ruby-full
+    gem install jekyll bundler
+
+&emsp;&emsp;然后我们可以开始新建一个Jekyll博客，或者FORK一个优秀的模板。FORK时需要注意对方Gemfile里的plugins,使用`bundle install`来安装所有需要的plugins，然后`bundle exec jekyll serve`即可开启服务，如需开启多个jekyll serve 可加`--port xxxx`指定端口
+
+    dddd
+    dddd
+
+2.Jekyll的使用
+
+&emsp;&emsp;使用具体可以参考官网的教程。我这里说说我遇到的几个问题。首先我是想用这github.io搭建一个类似与导航的首页，其次可以兼顾BLOG的功能。这就牵扯到一个问题，jekyll的分页只支持在index.html下进行，如果想用网址访问首页（不加\xxx）则BLOG主页无法完成分页展示所有BOLG的功能。所以当时我的第一考虑是再搭建一个repository，这样BLOG使用github.io/blog。但是发现这样会出现一个bug，点击下一页，出现404。这个问题困扰了我很久，后来经过多次google，并再次翻阅官方文档，发现：
+> 分页功能从名为 index.html 的 HTML 文件中被调用时，才能工作
+
+也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。
+
+<span id="title3"></span>
+### 三. 遇到的问题与解决办法
+
+1.在移动设备上滑动没有惯性
+
+&emsp;&emsp;在搭建完毕后发现在pad或者iphone上浏览此网页滑动非常生涩，没有惯性。之后google后发现是解决此问题需要在css中添加`webkit-overflow-scrolling: touch;`。由于此模板是fork的<a href="https://github.com/artemsheludko/adam-blog">adam-blog</a>的，不知道在哪个css模块添加合适，于是我就访问了adam-blog的github.io。但让我惊讶的是，他的网页滑动有惯性！那我就开始怀疑是我更改的哪个位置的代码产生了这个问题，于是我将自己fork的adam-blog的代码和我自己更改后的代码做对比，搜索touch，并没有搜到结果，也有发现问题。这个问题让我非常头大，耗费了近一个小时。最后在调试彼此的网页后发现，adam已经添加了`webkit-overflow-scrolling: touch;`。我错在是拿自己两年前fork的代码和自己更改的代码做的对比，这个BUG在去年修复的.......
+
+&emsp;&emsp;于是我又仔细浏览了adam最近做的修改，并应用的自己的网站上。总结:
+
+>如果是fork的别人的repo，要经常查看原作者做的改动！！！
+
+ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
+![截图](/assets/img/touch.png) -->
+
+<p><span id="title4"></span></p>
+<h3 id="四关于本篇博客">四.关于本篇博客</h3>
+
+<p>可以看到最上方的图片使用了词云,代码如下：</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#wordCloud.py
+</span><span class="kn">import</span> <span class="nn">jieba</span>
+<span class="kn">import</span> <span class="nn">wordcloud</span>
+<span class="kn">from</span>  <span class="nn">imageio</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="c1">#中文
+</span><span class="s">'''mask=imread('fivestart.jpg')
+f=open('新时代中国特色社会主义.txt','r',encoding='utf-8')
+t=f.read()
+f.close()
+ls=jieba.lcut(t)
+txt=' '.join(ls)
+w=wordcloud.WordCloud(font_path='msyh.ttc',max_words=99,mask=mask,background_color='white')
+w.generate(txt)
+w.to_file('grwordcloud.png')'''</span>
+
+<span class="c1">#英文
+</span><span class="n">mask</span><span class="o">=</span><span class="n">imread</span><span class="p">(</span><span class="s">'sun.jpg'</span><span class="p">)</span>
+<span class="c1">#f=open('words.txt','r')
+#t=f.read()
+#f.close()
+</span><span class="n">t</span><span class="o">=</span><span class="s">'Linux,bash,vim,code'</span>
+<span class="n">w</span><span class="o">=</span><span class="n">wordcloud</span><span class="o">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">max_words</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">background_color</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span><span class="n">collocations</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">repeat</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">w</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">w</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s">'wordcloud.jpg'</span><span class="p">)</span></code></pre></figure>
+
+<blockquote>
+  <p>!!!如果想让一个词重复多次，需要设置 <code class="highlighter-rouge">wordcloud.WordCloud(repeat=True)</code> !!!</p>
+</blockquote>
+
+
+        <div class="page-footer">
+          <div class="page-tag">
+            <span>Tags:</span>
+            
+            <a href="/tags#Blog" class="tag">| Blog</a>
+            
+            <a href="/tags#Linux" class="tag">| Linux</a>
+            
+            <a href="/tags#bash" class="tag">| bash</a>
+            
+            <a href="/tags#vim" class="tag">| vim</a>
+            
+            <a href="/tags#code" class="tag">| code</a>
+            
+          </div><!-- End Tags -->
+          <div class="page-share">
+            <span>Share:</span>
+            <a href="https://twitter.com/intent/tweet?text=Linux bash vim code 个人使用技巧总结&url=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+          </div><!-- End Share -->
+        </div>
+        <section class="author-box">
+  <img src="/assets/img/heroes-Peter.jpg" alt="Walter White" class="author-img">
+  <div class="author-desc">
+    <h2>Walter White</h2>
+    <p>My name is Walter White. I’m an operations enginner(ops) who’s always want to be a software enginner.I'm still trying!</p>
+    <ul>
+      
+        <li class="email"><a href="mailto:example.adam@blog.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+      
+      
+        <li class="phone"><a href="tel:044 825 5523"><i class="fa fa-phone" aria-hidden="true"></i></a></li>
+      
+      
+        <li class="website"><a href="https://artemsheludko.github.io" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a></li>
+      
+      
+        <li class="twitter"><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+      
+    </ul>
+  </div>
+</section>
+
+        <div class="recent-box">
+  <h2 class="recent-title">Recent post</h2>
+  <div class="recent-list">
+    
+      
+        <a href="/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" class="recent-item" style="background: url(/assets/img/britishforest.jpg) center no-repeat; background-size: cover;"><span>交换机MAC地址查询总结</span></a>
+      
+    
+      
+        <a href="/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" class="recent-item" style="background: url(/assets/img/wordcloud.jpg) center no-repeat; background-size: cover;"><span>Linux bash vim code 个人使用技巧总结</span></a>
+      
+    
+      
+        <a href="/my-first-blog/" class="recent-item" style="background: url(/assets/img/sun_behind_the_mountain.jpg) center no-repeat; background-size: cover;"><span>My first blog</span></a>
+      
+    
+      
+        <a href="/lalala/" class="recent-item" style="background: url(/assets/img/post-6.jpg) center no-repeat; background-size: cover;"><span>lalala</span></a>
+      
+    
+  </div>
+</div> <!-- End Recent-Box -->
+
+        <div class="newsletter" id="mc_embed_signup">
+  <h2 class="newsletter-title">Newsletter</h2>
+  <div class="form-container">
+    <p>Subscribe here to get our latest updates</p>
+    <form action="//" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <label class="screen-reader-text" for="mce-EMAIL">Email Address</label>
+      <div class="newsletter-box" id="mc_embed_signup_scroll">
+        <input type="email" name="EMAIL" placeholder="Email address" class="email-input" id="mce-EMAIL" required>
+        <input type="submit" value="Subscribe" name="subscribe" class="subscribe-btn" id="mc-embedded-subscribe">
+      </div>
+    </form>
+  </div>
+</div> <!-- End Newsletter -->
+
+        <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+      </div>
+    </div> <!-- End Wrapper -->
+  </article>
+  <div class="search-box">
+  <div class="wrapper">
+    <div class="search-grid">
+      <form class="search-form">
+        <div id="search-container">
+          <input type="text" id="search-input" class="search" placeholder="Search">
+        </div>
+      </form>
+      <ul id="results-container" class="results-search"></ul>
+      <div class="icon-close-container">
+        <span class="search-icon-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer class="main-footer">
+  <div class="copyright">
+  	<p>
+  		2019 &copy; Walter White    
+  		
+  		<a class="github" href="http://github.com/j16949" target="_blank"><i class="fa fa-github"></i></a>
+  		
+  	</p>
+  </div>
+</footer> <!-- End Footer -->
+
+</div>
+
+  <!-- JS -->
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/assets/js/jekyll-search.js"></script>
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '/search.json',
+    searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+    noResultsText: 'No results found',
+    fuzzy: false,
+    exclude: ['Welcome']
+  });
+</script>
+<script src="/assets/js/main.js"></script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

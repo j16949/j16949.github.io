@@ -1,0 +1,119 @@
+---
+layout: post
+title:  交换机MAC地址查询总结
+date:   2019-08-02 19:17:20 +0800
+description: How to lookup switch's mac address # Add post description (optional)
+img: britishforest.jpg # Add image post (optional)
+tags: [Blog, switch , huawei , h3c , cisco]
+author: Walter White # Add name author (optional)
+---
+<style type="text/css">
+p{ line-height: 170% }
+</style>
+
+>### 由于工作中经常需要查询设备mac，以定位设备或解决问题，因此总结一下mac查找办法。
+
+<br>
+<br>
+导航：
+
+1. [huawei](#title1)
+2. [h3c](#title2)
+3. [cisco](#title3)
+4. [通用](#title4)
+
+
+<span id="title1"></span>
+### 一. huawei
+
+<p>	<strong>1、查看系统MAC</strong></p>
+<p>
+	1）盒式交换机：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display bridge mac-add </font><br />
+	System bridge MAC address: xxxx-xxxx-xxxx</p>
+<p>
+	2）框式交换机：</p>
+<p>
+	&lt;S9303&gt;<font style="color: #0000ff">display system-mac </font><br />
+	MAC-num&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :1<br />
+	Index&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAC Addr<br />
+	----------------------------<br />
+	default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxxx-xxxx-xxxx<br />
+	<br />
+	current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxxx-xxxx-xxxx</p>
+<p>
+	<strong>2、查看接口MAC</strong></p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display interface GigabitEthernet0/0/10 </font><br />
+	GigabitEthernet0/0/10 current state : UP<br />
+	Line protocol current state : UP<br />
+	Description:<br />
+	Switch Port, Link-type : trunk(configured),<br />
+	PVID :&nbsp;&nbsp;&nbsp; 1, TPID : 8100(Hex), The Maximum Frame Length is 1600<br />
+	IP Sending Frames&#39; Format is PKTFMT_ETHNT_2, <font style="color: #0000ff">Hardware address is xxxx-xxxx-xxxx </font><br />
+	Current system time: 2015-03-02 10:50:43+08:00<br />
+	Port Mode: COMMON COPPER<br />
+	Speed : 1000,&nbsp;&nbsp; Loopback: INTERNAL<br />
+	Duplex: FULL,&nbsp;&nbsp; Negotiation: DISABLE<br />
+	Mdi&nbsp;&nbsp; : AUTO,&nbsp;&nbsp; Flow-control: DISABLE<br />
+	Last 300 seconds input rate 480 bits/sec, 0 packets/sec<br />
+	Last 300 seconds output rate 480 bits/sec, 0 packets/sec<br />
+	Input peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47<br />
+	Output peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47<br />
+	Input:&nbsp; 510225 packets, 80014227 bytes<br />
+	&nbsp; Unicast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Multicast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 510225<br />
+	&nbsp; Broadcast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Jumbo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Discard:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Pause:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Frames:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	<br />
+	&nbsp; Total Error:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; CRC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Giants:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Jabbers:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Fragments:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Runts:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; DropEvents:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; ---- More ----</p>
+<p>
+	<strong>3、查看设备学习到的mac表项</strong></p>
+<p>
+	1）查看整机所有类型mac地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address&nbsp;</font></p>
+<p>
+	2）查看某端口下mac地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address GigabitEthernet 0/0/X</font></p>
+<p>
+	3）查看系统所有动态MAC地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address dynamic </font></p>
+<p>
+	此处dynamic可以替换为blackhole、static、security、sticky、summary分别查看黑洞MAC、静态MAC、安全动态MAC、sticky MAC、MAC表项汇总信息。</p>
+<p>
+	由于内容较多，此处不再赘述；</p>
+<p>
+	欲了解更多MAC相关命令，请下载产品文档，在如下路径获取更多信息：参考&mdash;&mdash;以太网交换命令&mdash;&mdash;MAC表配置命令。</p>
+
+<span id="title2"></span>
+### 二. h3c
+
+**1.查看系统mac**
+
+&lt;h3c&gt;<font style="color: #0000ff">dis device manuinfo</font>
+
+**2.查看接口mac**
+
+&lt;h3c&gt;<font style="color: #0000ff">dis int vlanif 2</font>
+
+>用Wireshark抓包，当数据包跨网段时，source mac时常就是interface vlanif的地址(网关地址)
+
+
+<span id="title3"></span>
+### 三. cisco
+
+1.待补充
+
+<span id="title4"></span>
+### 四.通用
+
+&emsp;&emsp;！！！注意：当一台设备未通过802.1x认证，其mac无法显示在`dis mac-address`中，除非配置了guest-vlan，其显示在vlan 800中(待验证)
+

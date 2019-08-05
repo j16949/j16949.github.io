@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>My first blog - My page - Walter White</title>
-	<meta name="description" content="I have finally finished buliding my website,WOW!">
+	<title>交换机MAC地址查询总结 - My page - Walter White</title>
+	<meta name="description" content="How to lookup switch's mac address">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
@@ -52,84 +52,127 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/sun_behind_the_mountain.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/britishforest.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">My first blog</h1>
-          <div class="page-date"><time datetime="2019-07-15 22:17:20 +0800">2019, Jul 15</time></div>
+          <h1 class="page-title">交换机MAC地址查询总结</h1>
+          <div class="page-date"><time datetime="2019-08-02 19:17:20 +0800">2019, Aug 02</time></div>
         </div>
         <style type="text/css">
 p{ line-height: 170% }
 </style>
 
 <blockquote>
-  <h3 id="我的博客终于搭建完毕了其中遇到了无数的问题不过结果依旧开心可喜可贺可喜可贺">我的博客终于搭建完毕了，其中遇到了无数的问题，不过结果依旧开心，可喜可贺，可喜可贺！</h3>
+  <h3 id="由于工作中经常需要查询设备mac以定位设备或解决问题因此总结一下mac查找办法">由于工作中经常需要查询设备mac，以定位设备或解决问题，因此总结一下mac查找办法。</h3>
 </blockquote>
 
 <p><br />
 <br />
-想想从以下几个方面总结一下博客的搭建吧：</p>
+导航：</p>
 
 <ol>
-  <li><a href="#title1">Github创建项目与展示</a></li>
-  <li><a href="#title2">Jekyll安装配置与使用</a></li>
-  <li><a href="#title3">遇到的问题与解决办法</a></li>
-  <li><a href="#title4">感谢</a></li>
+  <li><a href="#title1">huawei</a></li>
+  <li><a href="#title2">h3c</a></li>
+  <li><a href="#title3">cisco</a></li>
+  <li><a href="#title4">通用</a></li>
 </ol>
 
 <p><span id="title1"></span></p>
-<h3 id="一-github创建项目与展示">一. Github创建项目与展示</h3>
+<h3 id="一-huawei">一. huawei</h3>
 
-<p>  首先，github为用户提供了一个终身免费的域名: username.github.io，可以利用这个域名搭建自己的博客<br />
-  其次，github下的repositories也可以展示为网页。方法是点击要展示的repository-&gt;Settings-&gt;GitHub Pages-&gt;Source下选择master branch。<br />
-  由于github.io是基于jekyll的，所以接下来我们需要学习如何用jekyll搭建一个网站</p>
+<p>	<strong>1、查看系统MAC</strong></p>
+<p>
+	1）盒式交换机：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display bridge mac-add </font><br />
+	System bridge MAC address: xxxx-xxxx-xxxx</p>
+<p>
+	2）框式交换机：</p>
+<p>
+	&lt;S9303&gt;<font style="color: #0000ff">display system-mac </font><br />
+	MAC-num&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :1<br />
+	Index&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAC Addr<br />
+	----------------------------<br />
+	default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxxx-xxxx-xxxx<br />
+	<br />
+	current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxxx-xxxx-xxxx</p>
+<p>
+	<strong>2、查看接口MAC</strong></p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display interface GigabitEthernet0/0/10 </font><br />
+	GigabitEthernet0/0/10 current state : UP<br />
+	Line protocol current state : UP<br />
+	Description:<br />
+	Switch Port, Link-type : trunk(configured),<br />
+	PVID :&nbsp;&nbsp;&nbsp; 1, TPID : 8100(Hex), The Maximum Frame Length is 1600<br />
+	IP Sending Frames&#39; Format is PKTFMT_ETHNT_2, <font style="color: #0000ff">Hardware address is xxxx-xxxx-xxxx </font><br />
+	Current system time: 2015-03-02 10:50:43+08:00<br />
+	Port Mode: COMMON COPPER<br />
+	Speed : 1000,&nbsp;&nbsp; Loopback: INTERNAL<br />
+	Duplex: FULL,&nbsp;&nbsp; Negotiation: DISABLE<br />
+	Mdi&nbsp;&nbsp; : AUTO,&nbsp;&nbsp; Flow-control: DISABLE<br />
+	Last 300 seconds input rate 480 bits/sec, 0 packets/sec<br />
+	Last 300 seconds output rate 480 bits/sec, 0 packets/sec<br />
+	Input peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47<br />
+	Output peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47<br />
+	Input:&nbsp; 510225 packets, 80014227 bytes<br />
+	&nbsp; Unicast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Multicast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 510225<br />
+	&nbsp; Broadcast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Jumbo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Discard:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Pause:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Frames:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	<br />
+	&nbsp; Total Error:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; CRC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Giants:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Jabbers:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Fragments:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Runts:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; DropEvents:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; ---- More ----</p>
+<p>
+	<strong>3、查看设备学习到的mac表项</strong></p>
+<p>
+	1）查看整机所有类型mac地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address&nbsp;</font></p>
+<p>
+	2）查看某端口下mac地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address GigabitEthernet 0/0/X</font></p>
+<p>
+	3）查看系统所有动态MAC地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address dynamic </font></p>
+<p>
+	此处dynamic可以替换为blackhole、static、security、sticky、summary分别查看黑洞MAC、静态MAC、安全动态MAC、sticky MAC、MAC表项汇总信息。</p>
+<p>
+	由于内容较多，此处不再赘述；</p>
+<p>
+	欲了解更多MAC相关命令，请下载产品文档，在如下路径获取更多信息：参考&mdash;&mdash;以太网交换命令&mdash;&mdash;MAC表配置命令。</p>
 
 <p><span id="title2"></span></p>
-<h3 id="二-jekyll安装配置与使用">二. Jekyll安装配置与使用</h3>
+<h3 id="二-h3c">二. h3c</h3>
 
-<p>1.Jekyll的安装配置</p>
+<p><strong>1.查看系统mac</strong></p>
 
-<p>  基本可以参考Jekyll的官方网站 https://jekyllrb.com/ 其对应的中文网站 http://jekyllcn.com/ （但是这个中文网站的版本落后于英文官网，从其右侧布局可以看出，但依然很有参考价值）还有一个中文网站不做推荐，因为翻译不太完整 https://www.jekyll.com.cn/docs/</p>
+<p>&lt;h3c&gt;<font style="color: #0000ff">dis device manuinfo</font></p>
 
-<p>  安装Jekyll 因为Jekyll is a Ruby Gem。所以需要依次安装Ruby,Jekyll和bundler</p>
+<p><strong>2.查看接口mac</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install ruby-full
-gem install jekyll bundler
-</code></pre></div></div>
+<p>&lt;h3c&gt;<font style="color: #0000ff">dis int vlanif 2</font></p>
 
-<p>  然后我们可以开始新建一个Jekyll博客，或者FORK一个优秀的模板。FORK时需要注意对方Gemfile里的plugins,使用<code class="highlighter-rouge">bundle install</code>来安装所有需要的plugins，然后<code class="highlighter-rouge">bundle exec jekyll serve</code>即可开启服务，如需开启多个jekyll serve 可加<code class="highlighter-rouge">--port xxxx</code>指定端口</p>
-
-<p>2.Jekyll的使用</p>
-
-<p>  使用具体可以参考官网的教程。我这里说说我遇到的几个问题。首先我是想用这github.io搭建一个类似与导航的首页，其次可以兼顾BLOG的功能。这就牵扯到一个问题，jekyll的分页只支持在index.html下进行，如果想用网址访问首页（不加\xxx）则BLOG主页无法完成分页展示所有BOLG的功能。所以当时我的第一考虑是再搭建一个repository，这样BLOG使用github.io/blog。但是发现这样会出现一个bug，点击下一页，出现404。这个问题困扰了我很久，后来经过多次google，并再次翻阅官方文档，发现：</p>
 <blockquote>
-  <p>分页功能从名为 index.html 的 HTML 文件中被调用时，才能工作</p>
+  <p>用Wireshark抓包，当数据包跨网段时，source mac时常就是interface vlanif的地址(网关地址)</p>
 </blockquote>
-
-<p>也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。</p>
 
 <p><span id="title3"></span></p>
-<h3 id="三-遇到的问题与解决办法">三. 遇到的问题与解决办法</h3>
+<h3 id="三-cisco">三. cisco</h3>
 
-<p>1.在移动设备上滑动没有惯性</p>
-
-<p>  在搭建完毕后发现在pad或者iphone上浏览此网页滑动非常生涩，没有惯性。之后google后发现是解决此问题需要在css中添加<code class="highlighter-rouge">webkit-overflow-scrolling: touch;</code>。由于此模板是fork的<a href="https://github.com/artemsheludko/adam-blog">adam-blog</a>的，不知道在哪个css模块添加合适，于是我就访问了adam-blog的github.io。但让我惊讶的是，他的网页滑动有惯性！那我就开始怀疑是我更改的哪个位置的代码产生了这个问题，于是我将自己fork的adam-blog的代码和我自己更改后的代码做对比，搜索touch，并没有搜到结果，也有发现问题。这个问题让我非常头大，耗费了近一个小时。最后在调试彼此的网页后发现，adam已经添加了<code class="highlighter-rouge">webkit-overflow-scrolling: touch;</code>。我错在是拿自己两年前fork的代码和自己更改的代码做的对比，这个BUG在去年修复的…….</p>
-
-<p>  于是我又仔细浏览了adam最近做的修改，并应用的自己的网站上。总结:</p>
-
-<blockquote>
-  <p>如果是fork的别人的repo，要经常查看原作者做的改动！！！</p>
-</blockquote>
-
-<p>ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
-<img src="/assets/img/touch.png" alt="截图" /></p>
+<p>1.待补充</p>
 
 <p><span id="title4"></span></p>
-<h3 id="四感谢">四.感谢</h3>
+<h3 id="四通用">四.通用</h3>
 
-<p>  首先感谢adam，因为模板是fork自<a href="https://github.com/artemsheludko/adam-blog">adam-blog</a>的。感谢欢，是她一直陪伴着我，从搭建这个网站到这篇博客，感谢她时刻给予我的鼓励。感谢平，是他的一句玩笑话“你的网站毫无ui”，因此，我才将原来一个html扩展到现在的主页+博客。</p>
+<p>  ！！！注意：当一台设备未通过802.1x认证，其mac无法显示在<code class="highlighter-rouge">dis mac-address</code>中，除非配置了guest-vlan，其显示在vlan 800中(待验证)</p>
 
 
         <div class="page-footer">
@@ -138,16 +181,20 @@ gem install jekyll bundler
             
             <a href="/tags#Blog" class="tag">| Blog</a>
             
-            <a href="/tags#Mountains" class="tag">| Mountains</a>
+            <a href="/tags#switch" class="tag">| switch</a>
             
-            <a href="/tags#jekyll" class="tag">| jekyll</a>
+            <a href="/tags#huawei" class="tag">| huawei</a>
+            
+            <a href="/tags#h3c" class="tag">| h3c</a>
+            
+            <a href="/tags#cisco" class="tag">| cisco</a>
             
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=My first blog&url=http://localhost:4000/my-first-blog/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/my-first-blog/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/my-first-blog/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=交换机MAC地址查询总结&url=http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">
