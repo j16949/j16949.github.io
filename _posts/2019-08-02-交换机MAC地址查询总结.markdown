@@ -3,7 +3,7 @@ layout: post
 title:  交换机MAC地址查询总结
 date:   2019-08-02 19:17:20 +0800
 description: How to lookup switch's mac address # Add post description (optional)
-img: britishforest.jpg # Add image post (optional)
+img: britishforest1.jpg # Add image post (optional)
 tags: [Blog, switch , huawei , h3c , cisco]
 author: Walter White # Add name author (optional)
 ---
