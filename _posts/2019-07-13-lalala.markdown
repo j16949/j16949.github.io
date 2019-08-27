@@ -7,6 +7,7 @@ img: post-6.jpg # Add image post (optional)
 tags: [Blog, Meditation]
 author: # Add name author (optional)
 ---
+<a href="{{ site.url }}/feed.xml">RSS订阅</a>
 dsfadsafasdfasdf
 asdf
 asdf
