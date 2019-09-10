@@ -65,6 +65,12 @@ p{ line-height: 170% }
 ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
 ![截图]({{site.baseurl}}/assets/img/touch.png)
 
+2.在局域网内通过其他终端访问jekyll
+
+&emsp;&emsp;由于jekyll将地址绑定到了127.0.0.1，导致局域网的其它机器并不能访问它的服务。但实际上只要改变运行jekyll的参数就可以了。
+
+`$ jekyll serve -w --host=0.0.0.0`
+
 <span id="title4"></span>
 ### 四.感谢
 

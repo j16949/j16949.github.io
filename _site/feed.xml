@@ -1,5 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-27T21:16:47+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My page - Walter White</title><subtitle>Walter White's blog.记录我的学习，工作和生活。分享一些技术心得，欢迎访问和订阅。
-</subtitle><author><name>Walter White</name></author><entry><title type="html">交换机MAC地址查询总结</title><link href="http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="交换机MAC地址查询总结" /><published>2019-08-02T19:17:20+08:00</published><updated>2019-08-02T19:17:20+08:00</updated><id>http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/">&lt;style type=&quot;text/css&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-10T15:40:26+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My page - Walter White</title><subtitle>Walter White's blog.记录我的学习，工作和生活。分享一些技术心得，欢迎访问和订阅。
+</subtitle><author><name>Walter White</name></author><entry><title type="html">The Linux Command Line 学习笔记</title><link href="http://localhost:4000/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="The Linux Command Line 学习笔记" /><published>2019-09-06T19:17:20+08:00</published><updated>2019-09-06T19:17:20+08:00</updated><id>http://localhost:4000/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">&lt;style type=&quot;text/css&quot;&gt;
+p{ line-height: 170% }
+&lt;/style&gt;
+
+&lt;blockquote&gt;
+  &lt;h3 id=&quot;记录学习the-linux-command-line中的心得与遇到的问题&quot;&gt;记录学习《The Linux Command Line》中的心得与遇到的问题。&lt;/h3&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+导航：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#title1&quot;&gt;心得&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title2&quot;&gt;学习笔记&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title3&quot;&gt;关于书中的例子&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;span id=&quot;title1&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一-心得&quot;&gt;一. 心得&lt;/h3&gt;
+
+&lt;p&gt;想当时突发奇想想学一学Linux,网上看了不少推荐教材。看大家推荐不少好书，其中就有《The Linux Command Line》。读起来发现这本书不是那种特别学术和格式化的教学，而是一步步带你操作和深入，像读故事一样轻松愉快。同时也可以将这本书当作一本工具书作为查询使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;span id=&quot;title2&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;二-学习笔记&quot;&gt;二. 学习笔记&lt;/h3&gt;
+
+&lt;p&gt;&lt;span id=&quot;title3&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;三-关于书中的例子&quot;&gt;三. 关于书中的例子&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1.here document&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;不管是PDF书还是网页版的TCL &lt;a href=&quot;http://billie66.github.io/TLCL/book/&quot;&gt;http://billie66.github.io/TLCL/book/&lt;/a&gt; 。当复制例子时，都会出现空白字符用空格而不是TAB填充。而重定向操作符从“«”改为“«-”,shell 会忽略在此 here document 中开头的 tab 字符（只忽视TAB字符，没有空格)。所以我们必须把空格改为TAB。这里有两种办法：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;a.在有’«‘或‘«-‘出现的段落的首尾用TAB替换空格,如:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;bai@ubuntu:~/myshell/bcProject&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; test2
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash$&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# loan-calc : script to calculate monthly loan payments$&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PROGNAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;basename&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
+usage &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;$
+    Usage: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PROGNAME&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; PRINCIPAL INTEREST MONTHS$
+    Where:$
+    PRINCIPAL is the amount of the loan.$
+    INTEREST is the APR as a number (7% = 0.07).$
+    MONTHS is the length of the loan's term.$
+^IEOF$
+}$&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;b.全局用TAB替换4个空格&lt;code class=&quot;highlighter-rouge&quot;&gt;:%s\    \^I\g&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Walter White</name></author><category term="Blog" /><category term="Linux" /><category term="bash" /><summary type="html"></summary></entry><entry><title type="html">交换机MAC地址查询总结</title><link href="http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="交换机MAC地址查询总结" /><published>2019-08-02T19:17:20+08:00</published><updated>2019-08-02T19:17:20+08:00</updated><id>http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/">&lt;style type=&quot;text/css&quot;&gt;
 p{ line-height: 170% }
 &lt;/style&gt;
 
@@ -125,9 +174,8 @@ p{ line-height: 170% }
 
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;#title1&quot;&gt;复制文件或内容&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#title2&quot;&gt;实用快捷键&lt;/a&gt;
-&lt;!-- 3. [遇到的问题与解决办法](#title3)--&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#title4&quot;&gt;感谢&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title2&quot;&gt;实用快捷键&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#title3&quot;&gt;关于本篇博客&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;span id=&quot;title1&quot;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -163,41 +211,8 @@ p{ line-height: 170% }
 
 &lt;p&gt;1.Ctrl+d 选择下一个相同元素(code,sublime可用)&lt;/p&gt;
 
-&lt;!-- &amp;emsp;&amp;emsp;基本可以参考Jekyll的官方网站 https://jekyllrb.com/ 其对应的中文网站 http://jekyllcn.com/ （但是这个中文网站的版本落后于英文官网，从其右侧布局可以看出，但依然很有参考价值）还有一个中文网站不做推荐，因为翻译不太完整 https://www.jekyll.com.cn/docs/
-
-&amp;emsp;&amp;emsp;安装Jekyll 因为Jekyll is a Ruby Gem。所以需要依次安装Ruby,Jekyll和bundler
-
-    sudo apt install ruby-full
-    gem install jekyll bundler
-
-&amp;emsp;&amp;emsp;然后我们可以开始新建一个Jekyll博客，或者FORK一个优秀的模板。FORK时需要注意对方Gemfile里的plugins,使用`bundle install`来安装所有需要的plugins，然后`bundle exec jekyll serve`即可开启服务，如需开启多个jekyll serve 可加`--port xxxx`指定端口
-
-    dddd
-    dddd
-
-2.Jekyll的使用
-
-&amp;emsp;&amp;emsp;使用具体可以参考官网的教程。我这里说说我遇到的几个问题。首先我是想用这github.io搭建一个类似与导航的首页，其次可以兼顾BLOG的功能。这就牵扯到一个问题，jekyll的分页只支持在index.html下进行，如果想用网址访问首页（不加\xxx）则BLOG主页无法完成分页展示所有BOLG的功能。所以当时我的第一考虑是再搭建一个repository，这样BLOG使用github.io/blog。但是发现这样会出现一个bug，点击下一页，出现404。这个问题困扰了我很久，后来经过多次google，并再次翻阅官方文档，发现：
-&gt; 分页功能从名为 index.html 的 HTML 文件中被调用时，才能工作
-
-也就是只要名为index.html就可以，所以我新建了一个blog文件夹，在其下放入index.html。这样依旧可以实现在对_post/内容的分页。
-
-&lt;span id=&quot;title3&quot;&gt;&lt;/span&gt;
-### 三. 遇到的问题与解决办法
-
-1.在移动设备上滑动没有惯性
-
-&amp;emsp;&amp;emsp;在搭建完毕后发现在pad或者iphone上浏览此网页滑动非常生涩，没有惯性。之后google后发现是解决此问题需要在css中添加`webkit-overflow-scrolling: touch;`。由于此模板是fork的&lt;a href=&quot;https://github.com/artemsheludko/adam-blog&quot;&gt;adam-blog&lt;/a&gt;的，不知道在哪个css模块添加合适，于是我就访问了adam-blog的github.io。但让我惊讶的是，他的网页滑动有惯性！那我就开始怀疑是我更改的哪个位置的代码产生了这个问题，于是我将自己fork的adam-blog的代码和我自己更改后的代码做对比，搜索touch，并没有搜到结果，也有发现问题。这个问题让我非常头大，耗费了近一个小时。最后在调试彼此的网页后发现，adam已经添加了`webkit-overflow-scrolling: touch;`。我错在是拿自己两年前fork的代码和自己更改的代码做的对比，这个BUG在去年修复的.......
-
-&amp;emsp;&amp;emsp;于是我又仔细浏览了adam最近做的修改，并应用的自己的网站上。总结:
-
-&gt;如果是fork的别人的repo，要经常查看原作者做的改动！！！
-
-ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
-![截图](/assets/img/touch.png) --&gt;
-
-&lt;p&gt;&lt;span id=&quot;title4&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&quot;四关于本篇博客&quot;&gt;四.关于本篇博客&lt;/h3&gt;
+&lt;p&gt;&lt;span id=&quot;title3&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;三关于本篇博客&quot;&gt;三.关于本篇博客&lt;/h3&gt;
 
 &lt;p&gt;可以看到最上方的图片使用了词云,代码如下：&lt;/p&gt;
 
@@ -294,6 +309,12 @@ gem install jekyll bundler
 &lt;p&gt;ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
 &lt;img src=&quot;/assets/img/touch.png&quot; alt=&quot;截图&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;2.在局域网内通过其他终端访问jekyll&lt;/p&gt;
+
+&lt;p&gt;  由于jekyll将地址绑定到了127.0.0.1，导致局域网的其它机器并不能访问它的服务。但实际上只要改变运行jekyll的参数就可以了。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ jekyll serve -w --host=0.0.0.0&lt;/code&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;span id=&quot;title4&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&quot;四感谢&quot;&gt;四.感谢&lt;/h3&gt;
 
@@ -358,18 +379,6 @@ df
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Walter White</name></author><category term="Blog" /><category term="Mountains" /><category term="Sport" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Time to think</title><link href="http://localhost:4000/time-to-think/" rel="alternate" type="text/html" title="Time to think" /><published>2017-08-21T18:32:20+08:00</published><updated>2017-08-21T18:32:20+08:00</updated><id>http://localhost:4000/time-to-think</id><content type="html" xml:base="http://localhost:4000/time-to-think/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Walter White</name></author><category term="Blog" /><category term="Meditation" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">The forest in the fog</title><link href="http://localhost:4000/the-forest-in-the-fog/" rel="alternate" type="text/html" title="The forest in the fog" /><published>2017-08-20T18:32:20+08:00</published><updated>2017-08-20T18:32:20+08:00</updated><id>http://localhost:4000/the-forest-in-the-fog</id><content type="html" xml:base="http://localhost:4000/the-forest-in-the-fog/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 

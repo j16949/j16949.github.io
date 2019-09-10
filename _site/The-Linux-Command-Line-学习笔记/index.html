@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Linux bash vim code 个人使用技巧总结 - My page - Walter White</title>
-	<meta name="description" content="I have finally finished buliding my website,WOW!">
+	<title>The Linux Command Line 学习笔记 - My page - Walter White</title>
+	<meta name="description" content="The Linux Command Line 学习笔记">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
@@ -52,20 +52,20 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/wordcloud.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/post-5.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">Linux bash vim code 个人使用技巧总结</h1>
-          <div class="page-date"><time datetime="2019-07-31 10:17:20 +0800">2019, Jul 31</time></div>
+          <h1 class="page-title">The Linux Command Line 学习笔记</h1>
+          <div class="page-date"><time datetime="2019-09-06 19:17:20 +0800">2019, Sep 06</time></div>
         </div>
         <style type="text/css">
 p{ line-height: 170% }
 </style>
 
 <blockquote>
-  <h3 id="工欲善其事必先利其器本文总结一下平时bash和vim等使用的技巧吧">工欲善其事，必先利其器。本文总结一下平时bash和vim等使用的技巧吧。</h3>
+  <h3 id="记录学习the-linux-command-line中的心得与遇到的问题">记录学习《The Linux Command Line》中的心得与遇到的问题。</h3>
 </blockquote>
 
 <p><br />
@@ -73,77 +73,43 @@ p{ line-height: 170% }
 导航：</p>
 
 <ol>
-  <li><a href="#title1">复制文件或内容</a></li>
-  <li><a href="#title2">实用快捷键</a></li>
-  <li><a href="#title3">关于本篇博客</a></li>
+  <li><a href="#title1">心得</a></li>
+  <li><a href="#title2">学习笔记</a></li>
+  <li><a href="#title3">关于书中的例子</a></li>
 </ol>
 
 <p><span id="title1"></span></p>
-<h3 id="一-复制文件或内容">一. 复制文件或内容</h3>
+<h3 id="一-心得">一. 心得</h3>
 
-<p>1.复制文件</p>
-
-<ul>
-  <li>
-    <p><code class="highlighter-rouge">cp fileA fileB</code></p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">vim fileB</code>,然后输入ESC+’:’,<code class="highlighter-rouge">r fileA</code>(即把fileA内容read到fileB)</p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">vim -o fileA fileB</code>（同时编辑两个文件) ,y+G全部复制,ctrl+w,按方向键选择fileA或fileB,p粘贴</p>
-  </li>
-</ul>
-
-<p>2.复制内容</p>
-
-<ul>
-  <li>
-    <p><code class="highlighter-rouge">vim fileA</code>,按v进入visual模式，移动方向键，然后y复制</p>
-  </li>
-  <li>
-    <p>y+W复制单词，y+$复制到行尾，y+G复制到文件末尾</p>
-  </li>
-</ul>
+<p>想当时突发奇想想学一学Linux,网上看了不少推荐教材。看大家推荐不少好书，其中就有《The Linux Command Line》。读起来发现这本书不是那种特别学术和格式化的教学，而是一步步带你操作和深入，像读故事一样轻松愉快。同时也可以将这本书当作一本工具书作为查询使用。</p>
 
 <p><span id="title2"></span></p>
-<h3 id="二-实用快捷键">二. 实用快捷键</h3>
-
-<p>1.Ctrl+d 选择下一个相同元素(code,sublime可用)</p>
+<h3 id="二-学习笔记">二. 学习笔记</h3>
 
 <p><span id="title3"></span></p>
-<h3 id="三关于本篇博客">三.关于本篇博客</h3>
+<h3 id="三-关于书中的例子">三. 关于书中的例子</h3>
 
-<p>可以看到最上方的图片使用了词云,代码如下：</p>
+<p><strong>1.here document</strong></p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#wordCloud.py
-</span><span class="kn">import</span> <span class="nn">jieba</span>
-<span class="kn">import</span> <span class="nn">wordcloud</span>
-<span class="kn">from</span>  <span class="nn">imageio</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="c1">#中文
-</span><span class="s">'''mask=imread('fivestart.jpg')
-f=open('新时代中国特色社会主义.txt','r',encoding='utf-8')
-t=f.read()
-f.close()
-ls=jieba.lcut(t)
-txt=' '.join(ls)
-w=wordcloud.WordCloud(font_path='msyh.ttc',max_words=99,mask=mask,background_color='white')
-w.generate(txt)
-w.to_file('grwordcloud.png')'''</span>
+<p>不管是PDF书还是网页版的TCL <a href="http://billie66.github.io/TLCL/book/">http://billie66.github.io/TLCL/book/</a> 。当复制例子时，都会出现空白字符用空格而不是TAB填充。而重定向操作符从“«”改为“«-”,shell 会忽略在此 here document 中开头的 tab 字符（只忽视TAB字符，没有空格)。所以我们必须把空格改为TAB。这里有两种办法：</p>
 
-<span class="c1">#英文
-</span><span class="n">mask</span><span class="o">=</span><span class="n">imread</span><span class="p">(</span><span class="s">'sun.jpg'</span><span class="p">)</span>
-<span class="c1">#f=open('words.txt','r')
-#t=f.read()
-#f.close()
-</span><span class="n">t</span><span class="o">=</span><span class="s">'Linux,bash,vim,code'</span>
-<span class="n">w</span><span class="o">=</span><span class="n">wordcloud</span><span class="o">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">max_words</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">background_color</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span><span class="n">collocations</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">repeat</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">w</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="n">w</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s">'wordcloud.jpg'</span><span class="p">)</span></code></pre></figure>
+<p><strong>a.在有’«‘或‘«-‘出现的段落的首尾用TAB替换空格,如:</strong></p>
 
-<blockquote>
-  <p>!!!如果想让一个词重复多次，需要设置 <code class="highlighter-rouge">wordcloud.WordCloud(repeat=True)</code> !!!</p>
-</blockquote>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">bai@ubuntu:~/myshell/bcProject<span class="nv">$ </span><span class="nb">cat</span> <span class="nt">-A</span> test2
+<span class="c">#!/bin/bash$</span>
+<span class="c"># loan-calc : script to calculate monthly loan payments$</span>
+<span class="nv">PROGNAME</span><span class="o">=</span><span class="si">$(</span><span class="nb">basename</span> <span class="nv">$0</span><span class="si">)</span><span class="err">$</span>
+usage <span class="o">()</span> <span class="o">{</span><span class="err">$</span>
+    <span class="nb">cat</span> <span class="o">&lt;&lt;-</span> <span class="no">EOF</span><span class="sh">$
+    Usage: </span><span class="nv">$PROGNAME</span><span class="sh"> PRINCIPAL INTEREST MONTHS$
+    Where:$
+    PRINCIPAL is the amount of the loan.$
+    INTEREST is the APR as a number (7% = 0.07).$
+    MONTHS is the length of the loan's term.$
+^IEOF$
+}$</span></code></pre></figure>
+
+<p><strong>b.全局用TAB替换4个空格<code class="highlighter-rouge">:%s\    \^I\g</code></strong></p>
 
 
         <div class="page-footer">
@@ -156,16 +122,12 @@ w.to_file('grwordcloud.png')'''</span>
             
             <a href="/tags#bash" class="tag">| bash</a>
             
-            <a href="/tags#vim" class="tag">| vim</a>
-            
-            <a href="/tags#code" class="tag">| code</a>
-            
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=Linux bash vim code 个人使用技巧总结&url=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=The Linux Command Line 学习笔记&url=http://localhost:4000/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">

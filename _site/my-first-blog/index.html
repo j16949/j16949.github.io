@@ -126,6 +126,12 @@ gem install jekyll bundler
 <p>ps:使用chrome调试可以看到touch属性，但是用电脑chrome的移动设备模式调试，无法展现出touch的惯性
 <img src="/assets/img/touch.png" alt="截图" /></p>
 
+<p>2.在局域网内通过其他终端访问jekyll</p>
+
+<p>  由于jekyll将地址绑定到了127.0.0.1，导致局域网的其它机器并不能访问它的服务。但实际上只要改变运行jekyll的参数就可以了。</p>
+
+<p><code class="highlighter-rouge">$ jekyll serve -w --host=0.0.0.0</code></p>
+
 <p><span id="title4"></span></p>
 <h3 id="四感谢">四.感谢</h3>
 
@@ -177,6 +183,10 @@ gem install jekyll bundler
   <div class="recent-list">
     
       
+        <a href="/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="recent-item" style="background: url(/assets/img/post-5.jpg) center no-repeat; background-size: cover;"><span>The Linux Command Line 学习笔记</span></a>
+      
+    
+      
         <a href="/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" class="recent-item" style="background: url(/assets/img/britishforest1.jpg) center no-repeat; background-size: cover;"><span>交换机MAC地址查询总结</span></a>
       
     
@@ -186,10 +196,6 @@ gem install jekyll bundler
     
       
         <a href="/my-first-blog/" class="recent-item" style="background: url(/assets/img/sun_behind_the_mountain.jpg) center no-repeat; background-size: cover;"><span>My first blog</span></a>
-      
-    
-      
-        <a href="/lalala/" class="recent-item" style="background: url(/assets/img/post-6.jpg) center no-repeat; background-size: cover;"><span>lalala</span></a>
       
     
   </div>
