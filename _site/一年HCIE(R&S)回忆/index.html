@@ -94,204 +94,23 @@ p{ line-height: 170% }
   去年10月，正好和现单位的同事聊天，得知他在学HCIE，自己有一些厂家也取得了这个证书，感觉还是有些含金量的。相比CCIE，HCIE在国内的认可度还蛮高，毕竟多了面试环节，再加上国内国产化的推进，果断报考了HCIE。</p>
 
 <p><span id="title3"></span></p>
-<h3 id="三-单选">三. 单选</h3>
+<h3 id="三-学习过程">三. 学习过程</h3>
 
-<p>首先需要说明一下，代码是打开一个TXT文档，将其转换为如上Excel格式文件。这里没有使用WORD，是因为实践中发现<code class="highlighter-rouge">python-docx</code>这个库是会将WORD中带有项目序号的内容去掉前面的1，2，3等序号，变为一个list，导致python代码中不能准确的取出每到题目。又由于docx本质上是一中XML文件，所以为了简单化处理，还是将其拷贝到TXT中以文本格式引入。</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#!/usr/bin/python
-#coding:utf-8
-</span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pprint</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="c1">#打开题库
-</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'singleChoice.txt'</span><span class="p">,</span><span class="s">'r'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">st</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="c1">#创建列表保存数据
-</span><span class="n">data</span><span class="o">=</span><span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">301</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1">#匹配题目，其中按照“1.*****2.”来匹配一道题目，\s匹配任何空白字符,等价于 [ \f\n\r\t\v]
-</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'(</span><span class="err">\</span><span class="s">s'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="err">\</span><span class="s">..*?)</span><span class="err">\</span><span class="s">s'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="err">\</span><span class="s">.'</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
-        <span class="c1">#去掉除空格外的空白字符，包括换行符、回车符、制表符等。
-</span>        <span class="n">sf</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'[</span><span class="se">\n\r\t</span><span class="s">]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span><span class="n">s</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-        <span class="c1">#将题目中的括号答案改为"?",匹配中文或者英文括号，匹配括号中或者括号前后多个空格
-</span>        <span class="n">kong</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'( *[</span><span class="err">\</span><span class="s">(</span><span class="err">\</span><span class="s">（] *[a-fA-F]* *[</span><span class="err">\</span><span class="s">)</span><span class="err">\</span><span class="s">）])'</span><span class="p">,</span> <span class="s">'?'</span><span class="p">,</span><span class="n">sf</span><span class="p">)</span>
-        <span class="c1">#去掉题目的题号,题号格式为"1."，限制为2位数以内
-</span>        <span class="n">kong</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'^[1-9]</span><span class="err">\</span><span class="s">d{0,2}</span><span class="err">\</span><span class="s">.'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">kong</span><span class="p">)</span>
-        <span class="c1">#拆分题目和答案，答案格式为"A、100度"或“A.100”其中选项编号和选项间可含空格
-</span>        <span class="n">k</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'[A-D] *[、</span><span class="err">\</span><span class="s">.] *'</span><span class="p">,</span><span class="n">kong</span><span class="p">)</span>
-        <span class="c1">#取出答案
-</span>        <span class="n">key</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'( *[</span><span class="err">\</span><span class="s">(</span><span class="err">\</span><span class="s">（] *[a-fA-F]* *[</span><span class="err">\</span><span class="s">)</span><span class="err">\</span><span class="s">）])'</span><span class="p">,</span><span class="n">sf</span><span class="p">)</span>
-        <span class="n">key</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'([a-fA-F]+)'</span><span class="p">,</span><span class="n">key</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-        <span class="c1">#将abcd,ABCD转化为1234,赋给cai(correct answer index)
-</span>        <span class="n">cai</span><span class="o">=</span><span class="nb">ord</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span><span class="o">-</span><span class="mi">63</span>
-        <span class="c1">#插入题目序号到k数组的第一项
-</span>        <span class="n">k</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-		<span class="c1">#插入答案到k数组的第二项
-</span>        <span class="n">k</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">k</span><span class="p">[</span><span class="n">cai</span><span class="p">])</span>
-        <span class="c1">#存入data数组
-</span>        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">pass</span>
-
- <span class="c1">#每一列标题
-</span><span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="s">'题号'</span><span class="p">,</span><span class="s">'题目'</span><span class="p">,</span><span class="s">'答案'</span><span class="p">,</span><span class="s">'A'</span><span class="p">,</span><span class="s">'B'</span><span class="p">,</span><span class="s">'C'</span><span class="p">,</span><span class="s">'D'</span><span class="p">]</span>          
-<span class="n">test</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">title</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="n">test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'singleChoice.csv'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'gbk'</span><span class="p">)</span></code></pre></figure>
+<p>  2019年10月国庆节过后，我开始了HCIE(R&amp;S)的学习之旅。每周六日，我乘坐一小时地铁去培训机构，连续学习两天课程。其中HCIP 9天，HCIE 15天。其中只有IP和IE间我休息了一个周日，其他的周末都用来学习。周中完成老师布置的作业，我一般是先把实验手册的实验敲一便，然后再完成作业，这样更容易加深理解。直到2020年春节前，我结束了一个周期的学习。期间没有我同事宝宝的陪伴我一定坚持不下来，为了陪我，他已经是第三四轮听课了，其实他完全没有必要跑这么远听他听过的内容，我们约定春节过后一起考笔试。</p>
 
 <p><span id="title4"></span></p>
-<h3 id="四-多选">四. 多选</h3>
+<h3 id="四-备考过程">四. 备考过程</h3>
 
-<p>单选要求填写答案内容，而多选要求填写答案选项</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#!/usr/bin/python
-#coding:utf-8
-</span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pprint</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="c1">#打开题库
-</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'multiChoice.txt'</span><span class="p">,</span><span class="s">'r'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">st</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="c1">#创建列表保存数据
-</span><span class="n">data</span><span class="o">=</span><span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">301</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1">#匹配题目，其中按照“1.*****2.”来匹配一道题目，\s匹配任何空白字符,等价于 [ \f\n\r\t\v]
-</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'(</span><span class="err">\</span><span class="s">s'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="err">\</span><span class="s">..*?)</span><span class="err">\</span><span class="s">s'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="err">\</span><span class="s">.'</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
-        <span class="c1">#去掉除空格外的空白字符，包括换行符、回车符、制表符等。
-</span>        <span class="n">sf</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'[</span><span class="se">\n\r\t</span><span class="s">]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span><span class="n">s</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-        <span class="c1">#将题目中的括号答案改为"?"
-</span>        <span class="n">kong</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'( *[</span><span class="err">\</span><span class="s">(</span><span class="err">\</span><span class="s">（] *[a-fA-F]* *[</span><span class="err">\</span><span class="s">)</span><span class="err">\</span><span class="s">）])'</span><span class="p">,</span> <span class="s">'?'</span><span class="p">,</span><span class="n">sf</span><span class="p">)</span>
-        <span class="c1">#去掉题目的题号,题号格式为"1."
-</span>        <span class="n">kong</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'^[1-9]</span><span class="err">\</span><span class="s">d{0,2}</span><span class="err">\</span><span class="s">.'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">kong</span><span class="p">)</span>
-        <span class="c1">#拆分题目和答案，答案格式为"A、100度"
-</span>        <span class="n">k</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'[A-D] *[、</span><span class="err">\</span><span class="s">.] *'</span><span class="p">,</span><span class="n">kong</span><span class="p">)</span>
-        <span class="c1">#取出答案
-</span>        <span class="n">key</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'( *[</span><span class="err">\</span><span class="s">(</span><span class="err">\</span><span class="s">（] *[a-fA-F]* *[</span><span class="err">\</span><span class="s">)</span><span class="err">\</span><span class="s">）])'</span><span class="p">,</span><span class="n">sf</span><span class="p">)</span>
-        <span class="n">key</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'([a-fA-F]+)'</span><span class="p">,</span><span class="n">key</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-        <span class="c1">#插入答案到k数组的第二项
-</span>        <span class="n">k</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-        <span class="n">k</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">key</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-        <span class="c1">#存入data数组
-</span>        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-        <span class="c1">#os.system('CLS')
-</span>    <span class="k">except</span><span class="p">:</span>
-        <span class="k">pass</span>
-
-<span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="s">'题号'</span><span class="p">,</span><span class="s">'题目'</span><span class="p">,</span><span class="s">'答案'</span><span class="p">,</span><span class="s">'A'</span><span class="p">,</span><span class="s">'B'</span><span class="p">,</span><span class="s">'C'</span><span class="p">,</span><span class="s">'D'</span><span class="p">]</span>           <span class="c1">#每一列标题
-</span><span class="n">test</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">title</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
-<span class="n">test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'multiChoice.csv'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'gbk'</span><span class="p">)</span></code></pre></figure>
+<p>  没等到春节过后，Covid-19爆发了。我和同事宝宝的笔试考试计划也一拖再拖直到4月初，笔试其实是相当较固定的题目，但我依然以搞懂每一道题为准，通过讨论和拿模拟器实验搞懂每一道题。最后，我们都顺利通过了笔试，接下来面对我们的还有实验和面试。<br />
+  接下来就是准备实验了，所说实验挂的人很少，但是由于配置量较大，如果配置出错难以排查。所以我还是准备了一个月，以防万一，毕竟考一次试也不便宜。这时，我和宝宝在时间点上产生了一些分歧。由于我合同8月份到期，我希望可以在到期前拿到这个证书，不然之后不太好处理。但是由于宝宝是本地的，他没有这个担忧。于是我只好先自己进行考试，5月底，我顺利通过了实验。<br />
+  最后，也是最难的一步，就是面试了。面试是挂人最多，灵活性最大的环节。留给我的时间也不多了，然而，当我开始认真看面试宝典，准备面试的时候，我才发现，是自己以为的太简单了。面试要准备的内容非常多，考的点和追问的点也非常多，我要想在两个月内全部准备充分几乎是不可能完成的任务，因为我每天还要上班，只靠下班和周末的时间是远远不够的。而且就算我在7月底拿到证书，也不可能立刻找到工作。于是，我只好拉长战线，约在了8月中旬面试。<br />
+  准备面试的过程，我先是看了一遍另一个老师的授课视频，重新复习了一遍理论知识。然后对着培训机构整理的面试宝典一个知识点一个知识点的自己在脑海中过。到了最后一个月，面试老师让我们即将考试的学员模拟面试，互相给对方讲题，这时我才发现自己理解的和自己能表述出来的不完全一样。“只有给别人讲清楚才算真正学会”，这时我终于理解了这句话。于是，我尝试给欢将这些题目，然而隔行如何山，就算她极力配合，我也讲的十分吃力，这时，我多么怀念和宝宝（男）一起学习的日子。然而事已至此，我只能另辟蹊径，正好疫情此时稍有缓解，我约了最近要考的同学一起去培训机构互相模拟面试练习。讲的过程中我们弥补了互相的不足。最后，虽然并没有100%的准备，但我依然成功通过了面试。</p>
 
 <p><span id="title5"></span></p>
-<h3 id="五-判断">五. 判断</h3>
+<h3 id="五-写在最后">五. 写在最后</h3>
 
-<p>判断主要在与将“T，F，√，X“替换为统一的表示形式</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#!/usr/bin/python
-#coding:utf-8
-</span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pprint</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="c1">#打开题库
-</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'judge.txt'</span><span class="p">,</span><span class="s">'r'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">st</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="c1">#创建列表保存数据
-</span><span class="n">data</span><span class="o">=</span><span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">301</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1">#匹配题目
-</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'(</span><span class="err">\</span><span class="s">s'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="err">\</span><span class="s">..*?)</span><span class="err">\</span><span class="s">s'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="err">\</span><span class="s">.'</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
-        <span class="c1">#去掉除空格外所有空白字符
-</span>        <span class="n">sf</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'[</span><span class="se">\n\r\t</span><span class="s">]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span><span class="n">s</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-        <span class="c1">#去掉题目的题号,题号格式为"1."
-</span>        <span class="n">kong</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'^[1-9]</span><span class="err">\</span><span class="s">d{0,2}</span><span class="err">\</span><span class="s">.'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">sf</span><span class="p">)</span>
-        <span class="c1">#拆分题目和答案，答案格式为（T）等
-</span>        <span class="n">k</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'( *[</span><span class="err">\</span><span class="s">(</span><span class="err">\</span><span class="s">（] *[√xtfXTF]+ *[</span><span class="err">\</span><span class="s">)</span><span class="err">\</span><span class="s">）])'</span><span class="p">,</span><span class="n">kong</span><span class="p">)</span>
-        <span class="c1">#取出答案
-</span>        <span class="n">key</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'([√xtfXTF])'</span><span class="p">,</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">key</span><span class="o">==</span><span class="s">'x'</span> <span class="ow">or</span> <span class="n">key</span><span class="o">==</span><span class="s">'X'</span> <span class="ow">or</span> <span class="n">key</span><span class="o">==</span><span class="s">'f'</span> <span class="ow">or</span> <span class="n">key</span><span class="o">==</span><span class="s">'F'</span><span class="p">:</span>
-            <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s">'F'</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s">'T'</span>
-        <span class="n">k</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-        <span class="k">del</span> <span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-        <span class="c1">#存入data数组
-</span>        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">pass</span>
-
-<span class="c1">#每一列标题
-</span><span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="s">'题号'</span><span class="p">,</span><span class="s">'题目'</span><span class="p">,</span><span class="s">'答案'</span><span class="p">]</span>           
-<span class="n">test</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">title</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
-<span class="n">test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'judge.csv'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'gbk'</span><span class="p">)</span></code></pre></figure>
-
-<p><span id="title6"></span></p>
-<h3 id="六-简答">六. 简答</h3>
-
-<p>简答统一按“答：”来拆分题目</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#!/usr/bin/python
-#coding:utf-8
-</span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pprint</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="c1">#打开题库
-</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'jianda.txt'</span><span class="p">,</span><span class="s">'r'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">st</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="c1">#创建列表保存数据
-</span><span class="n">data</span><span class="o">=</span><span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">301</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1">#匹配题目
-</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'(</span><span class="err">\</span><span class="s">s'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="err">\</span><span class="s">..*?)</span><span class="err">\</span><span class="s">s'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="err">\</span><span class="s">.'</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
-        <span class="c1">#去掉除空格外所有空白字符
-</span>        <span class="n">sf</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'[</span><span class="se">\n\r\t</span><span class="s">]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span><span class="n">s</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-        <span class="c1">#去掉题目的题号,题号格式为"1."
-</span>        <span class="n">kong</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'^[1-9]</span><span class="err">\</span><span class="s">d{0,2}</span><span class="err">\</span><span class="s">.'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">sf</span><span class="p">)</span>
-        <span class="c1">#拆分题目和答案，答案格式为"答："
-</span>        <span class="n">k</span> <span class="o">=</span> <span class="n">kong</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'答：'</span><span class="p">)</span>
-        <span class="c1">#插入题目序号
-</span>        <span class="n">k</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-        <span class="c1">#存入data数组
-</span>        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">pass</span>
-
-<span class="c1">#每一列标题
-</span><span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="s">'题号'</span><span class="p">,</span><span class="s">'题目'</span><span class="p">,</span><span class="s">'答案'</span><span class="p">]</span>           
-<span class="n">test</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">title</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
-<span class="n">test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'jianda.csv'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'gbk'</span><span class="p">)</span></code></pre></figure>
-
-<p><span id="title7"></span></p>
-<h3 id="七-总结">七. 总结</h3>
-
-<p>以上通过把题目分为单选，多选，判断和简答，分别用4个Python小程序将4个TXT转换为Excel。基本实现了需求，其中主要靠正则表达式匹配出题目和选项。然而程序还存在很多的不足，比如:</p>
-
-<ol>
-  <li><code class="highlighter-rouge">for i in range(1,301):</code>会固定循环300次，浪费资源</li>
-  <li>每次<code class="highlighter-rouge">s = re.search（）</code>都要遍历整个文档，效率低</li>
-  <li>操作复杂，要将WORD复制到TXT，在转Excel</li>
-</ol>
-
-<p>其实如果经常有出题的需求，应该做一个题库系统，将所有的题目按类别统一录入题库系统的数据库。这样有需求的话，只须将数据库的内容按不同形式表现。同时，更进一步的话可以将题库系统增加答题，错题统计等等的功能。</p>
-
-<blockquote>
-  <p><strong>题外话</strong></p>
-</blockquote>
-
-<p>用Python实现了题目形式的转化，其实说实话还不如自己一道一道出题，再录入Excel花费的总的时间少。不过生命贵在折腾么。再加上2020年Covid-19爆发，才让自己有时间折腾这么个程序。</p>
-
-<p>博客好久没有更新了，算算距离上次更新已经过去快半年了。其实这一段时间比较迷茫，面试了一些企业发现自己可能并没有机会再进入软件这个圈子。于是想想职业的道路还能往哪个方向发展，工作了这么多年主要负责网络和网络安全，也许在这个方向可以尝试一把。<br />
-于是去年10月报名学习了HCIE R&amp;S，也在今年初学完了第一轮，本想年后开始考试，争取早日拿上证书。然而，因为Covid-19，整个考试也被延后。在学习华为数通的过程中，也在了解网络的发展趋势，即渐渐的向SDN，SDWAN发展。未来的趋势就是控制平面与转发平面的进一步的分离，更合理细致化的流量转发将由软件平面控制。所以这么想，网络、软件还是一家。<br />
-学习的过程也是一个自我了解的过程。我发现自己不管从事哪个行业，哪种工作，总是希望创造一些新颖的东西。寻找事物发展的规律。所以，未来仍可期，不忘初心，方得始终！</p>
+<p>  考完的第一个周末，我终于有了可以休息的双休日。我和欢去了颐和园划船，我希望可以放下疲惫的身躯，感受自然惬意的生活。然而由于当时没出成绩，心情还是忐忑的。直到第二周，我得到通过的消息后，喜出望外，终于努力没有白费，此时才算真正放下心来。这周也就是第三周，我收到了华为寄来的证书和水晶杯。以前一直不理解欢要的形式感，没想到自己现在也这么在意。<br />
+  是时候开始自己的下一步了，休息也休息足了。虽然我也知道一个HCIE不能证明太多，但是也是对自己的一点肯定，给了我一些信心。其实我依然希望可以用双手写出一些，无论是代码还是方案，或者就是这样一篇博客，我希望可以创造一些东西，作出一些改变，哪怕最终达不到自己想要的，哪怕曲线救国，但依旧坚持努力，不忘初心，或许某一天幸福就会来敲门。</p>
 
 
         <div class="page-footer">
@@ -309,9 +128,9 @@ p{ line-height: 170% }
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=一年HCIE(R&S)回忆&url=http://0.0.0.0:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://0.0.0.0:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://0.0.0.0:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=一年HCIE(R&S)回忆&url=http://localhost:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">
