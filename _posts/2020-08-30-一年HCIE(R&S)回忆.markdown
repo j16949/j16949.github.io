@@ -1,0 +1,256 @@
+---
+layout: post
+title:  一年HCIE(R&S)回忆
+date:   2020-08-30 21:58:00 +0800
+description: 经过一年HCIE(R&S)的学习，终于取得了HCIE的证书，谈不上辛酸刻苦，但也付出了很多努力 # Add post description (optional)
+img: the_way.jpg # Add image post (optional)
+tags: [Blog, HCIE, HUAWEI,数通]
+author: Walter White # Add name author (optional)
+---
+<style type="text/css">
+p{ line-height: 170% }
+</style>
+
+>### 经过一年HCIE(R&S)的学习，终于取得了HCIE的证书，谈不上辛酸刻苦，但也付出了很多努力，谨以此文记录这一年中学习的点点滴滴。
+
+<br>
+<br>
+导航：
+
+1. [证书](#title1)
+2. [我为什么要考HCIE(R&S)](#title2)
+3. [学习过程](#title3)
+4. [备考过程](#title4)
+5. [写在最后](#title5)
+
+
+
+
+<span id="title1"></span>
+### 一. 证书
+
+![截图]({{site.baseurl}}/assets/img/hcie.jpg)
+
+<span id="title2"></span>
+### 二. 我为什么要考HCIE(R&S)
+
+&emsp;&emsp;从毕业后到现在，我在现有单位已经工作了五个年头。这五年一直从事着OA，也就是IT运维方面的工作，说白了也就是装装电脑，拉拉网线，修个打印机等等类似的工作。其实从我学的软件工程专业看，这并不是理想的工作。然而，之前我一直满足于现状，并不在乎自己做的是什么。直到去年，看着往日的同学研究生毕业的毕业，本科就参加工作的人也在互联网领域，像阿里，拼多多和小红书等等的企业工作。自己与他们的差距越来越大，不只是薪资上的，更多的是发展前途。  
+&emsp;&emsp;于是我去年自学了Python，开发岗海投了一些企业，但石沉大海。由于在单位参加过一次CTF比赛，就又投了一些网络安全方面的职位，但通过面试的过程发现自己所认知的不过是冰山一角。唯一通过初次面试的，是一次参加H3C的文档员，也就是写产品文档和案例的工作。复试时，面试官说的很诚恳，点明了我现在想直接走回老路基本是不可能的，而且由于这几年的工作经验其实在理论上并没有什么深入，给我开出的offer其实工资和我现在差不多，但工作强度却是现在的1.5倍甚至更多。我当时也在想，我还不想就这样一直坐在办公室写文档，就拒绝了这次机会。  
+&emsp;&emsp;经过几个月的面试，我终于认清了自己的处境。为什么一个企业不招聘一个应届本科生而要招你？你有什么优势？你的工作经验对你有什么帮助？其实，与我工作最着边的也就是数通方面了，虽然这方面和那些有很多项目经验的人相比也不值一提，但是对于我自己来说，可能这几年有所积累的也就是网络。  
+&emsp;&emsp;去年10月，正好和现单位的同事聊天，得知他在学HCIE，自己有一些厂家也取得了这个证书，感觉还是有些含金量的。相比CCIE，HCIE在国内的认可度还蛮高，毕竟多了面试环节，再加上国内国产化的推进，果断报考了HCIE。
+
+
+<span id="title3"></span>
+### 三. 单选
+
+首先需要说明一下，代码是打开一个TXT文档，将其转换为如上Excel格式文件。这里没有使用WORD，是因为实践中发现`python-docx`这个库是会将WORD中带有项目序号的内容去掉前面的1，2，3等序号，变为一个list，导致python代码中不能准确的取出每到题目。又由于docx本质上是一中XML文件，所以为了简单化处理，还是将其拷贝到TXT中以文本格式引入。
+
+{% highlight python %}
+
+#!/usr/bin/python
+#coding:utf-8
+import re
+import time
+import pprint
+import pandas as pd
+#打开题库
+with open('singleChoice.txt','r',encoding='utf8') as f:
+    st = f.read()
+a = 0
+#创建列表保存数据
+data=[]
+for i in range(1,301):
+    try:
+        #匹配题目，其中按照“1.*****2.”来匹配一道题目，\s匹配任何空白字符,等价于 [ \f\n\r\t\v]
+        s = re.search('(\s' + str(i) + '\..*?)\s' + str(i + 1) + '\.', st, re.S)
+        #去掉除空格外的空白字符，包括换行符、回车符、制表符等。
+        sf=re.sub('[\n\r\t]','',s.group(1))
+        #将题目中的括号答案改为"?",匹配中文或者英文括号，匹配括号中或者括号前后多个空格
+        kong = re.sub('( *[\(\（] *[a-fA-F]* *[\)\）])', '?',sf)
+        #去掉题目的题号,题号格式为"1."，限制为2位数以内
+        kong = re.sub('^[1-9]\d{0,2}\.', '', kong)
+        #拆分题目和答案，答案格式为"A、100度"或“A.100”其中选项编号和选项间可含空格
+        k=re.split('[A-D] *[、\.] *',kong)
+        #取出答案
+        key = re.search('( *[\(\（] *[a-fA-F]* *[\)\）])',sf)
+        key = re.search('([a-fA-F]+)',key.group(1))
+        #将abcd,ABCD转化为1234,赋给cai(correct answer index)
+        cai=ord(key.group(1).upper())-63
+        #插入题目序号到k数组的第一项
+        k.insert(0,i)
+		#插入答案到k数组的第二项
+        k.insert(2,k[cai])
+        #存入data数组
+        data.append(k)
+    except:
+        pass
+
+ #每一列标题
+title = ['题号','题目','答案','A','B','C','D']          
+test=pd.DataFrame(columns=title,data=data)
+test.to_csv('singleChoice.csv',encoding='gbk')
+
+{% endhighlight %}
+
+<span id="title4"></span>
+### 四. 多选
+
+单选要求填写答案内容，而多选要求填写答案选项
+
+{% highlight python %}
+
+#!/usr/bin/python
+#coding:utf-8
+import re
+import time
+import pprint
+import pandas as pd
+#打开题库
+with open('multiChoice.txt','r',encoding='utf8') as f:
+    st = f.read()
+#创建列表保存数据
+data=[]
+for i in range(1,301):
+    try:
+        #匹配题目，其中按照“1.*****2.”来匹配一道题目，\s匹配任何空白字符,等价于 [ \f\n\r\t\v]
+        s = re.search('(\s' + str(i) + '\..*?)\s' + str(i + 1) + '\.', st, re.S)
+        #去掉除空格外的空白字符，包括换行符、回车符、制表符等。
+        sf=re.sub('[\n\r\t]','',s.group(1))
+        #将题目中的括号答案改为"?"
+        kong = re.sub('( *[\(\（] *[a-fA-F]* *[\)\）])', '?',sf)
+        #去掉题目的题号,题号格式为"1."
+        kong = re.sub('^[1-9]\d{0,2}\.', '', kong)
+        #拆分题目和答案，答案格式为"A、100度"
+        k=re.split('[A-D] *[、\.] *',kong)
+        #取出答案
+        key = re.search('( *[\(\（] *[a-fA-F]* *[\)\）])',sf)
+        key = re.search('([a-fA-F]+)',key.group(1))
+        #插入答案到k数组的第二项
+        k.insert(0,i)
+        k.insert(2,key.group(1))
+        #存入data数组
+        data.append(k)
+        #os.system('CLS')
+    except:
+        pass
+
+title = ['题号','题目','答案','A','B','C','D']           #每一列标题
+test=pd.DataFrame(columns=title,data=data)
+print(test)
+test.to_csv('multiChoice.csv',encoding='gbk')
+
+{% endhighlight %}
+
+<span id="title5"></span>
+### 五. 判断
+
+判断主要在与将“T，F，√，X“替换为统一的表示形式
+
+{% highlight python %}
+
+#!/usr/bin/python
+#coding:utf-8
+import re
+import time
+import pprint
+import pandas as pd
+#打开题库
+with open('judge.txt','r',encoding='utf8') as f:
+    st = f.read()
+#创建列表保存数据
+data=[]
+for i in range(1,301):
+    try:
+        #匹配题目
+        s = re.search('(\s' + str(i) + '\..*?)\s' + str(i + 1) + '\.', st, re.S)
+        #去掉除空格外所有空白字符
+        sf=re.sub('[\n\r\t]','',s.group(1))
+        #去掉题目的题号,题号格式为"1."
+        kong = re.sub('^[1-9]\d{0,2}\.', '', sf)
+        #拆分题目和答案，答案格式为（T）等
+        k = re.split('( *[\(\（] *[√xtfXTF]+ *[\)\）])',kong)
+        #取出答案
+        key=re.search('([√xtfXTF])',k[1]).group(1)
+        if key=='x' or key=='X' or key=='f' or key=='F':
+            k[1]='F'
+        else:
+            k[1]='T'
+        k.insert(0,i)
+        del k[3]
+        #存入data数组
+        data.append(k)
+    except:
+        pass
+
+#每一列标题
+title = ['题号','题目','答案']           
+test=pd.DataFrame(columns=title,data=data)
+print(test)
+test.to_csv('judge.csv',encoding='gbk')
+
+{% endhighlight %}
+
+<span id="title6"></span>
+### 六. 简答
+
+简答统一按“答：”来拆分题目
+
+{% highlight python %}
+
+#!/usr/bin/python
+#coding:utf-8
+import re
+import time
+import pprint
+import pandas as pd
+#打开题库
+with open('jianda.txt','r',encoding='utf8') as f:
+    st = f.read()
+#创建列表保存数据
+data=[]
+for i in range(1,301):
+    try:
+        #匹配题目
+        s = re.search('(\s' + str(i) + '\..*?)\s' + str(i + 1) + '\.', st, re.S)
+        #去掉除空格外所有空白字符
+        sf=re.sub('[\n\r\t]','',s.group(1))
+        #去掉题目的题号,题号格式为"1."
+        kong = re.sub('^[1-9]\d{0,2}\.', '', sf)
+        #拆分题目和答案，答案格式为"答："
+        k = kong.split('答：')
+        #插入题目序号
+        k.insert(0,i)
+        #存入data数组
+        data.append(k)
+    except:
+        pass
+
+#每一列标题
+title = ['题号','题目','答案']           
+test=pd.DataFrame(columns=title,data=data)
+print(test)
+test.to_csv('jianda.csv',encoding='gbk')
+
+{% endhighlight %}
+
+<span id="title7"></span>
+### 七. 总结
+
+以上通过把题目分为单选，多选，判断和简答，分别用4个Python小程序将4个TXT转换为Excel。基本实现了需求，其中主要靠正则表达式匹配出题目和选项。然而程序还存在很多的不足，比如:
+
+1. `for i in range(1,301):`会固定循环300次，浪费资源
+2. 每次`s = re.search（）`都要遍历整个文档，效率低
+3. 操作复杂，要将WORD复制到TXT，在转Excel
+
+其实如果经常有出题的需求，应该做一个题库系统，将所有的题目按类别统一录入题库系统的数据库。这样有需求的话，只须将数据库的内容按不同形式表现。同时，更进一步的话可以将题库系统增加答题，错题统计等等的功能。
+
+>**题外话**
+
+用Python实现了题目形式的转化，其实说实话还不如自己一道一道出题，再录入Excel花费的总的时间少。不过生命贵在折腾么。再加上2020年Covid-19爆发，才让自己有时间折腾这么个程序。
+
+博客好久没有更新了，算算距离上次更新已经过去快半年了。其实这一段时间比较迷茫，面试了一些企业发现自己可能并没有机会再进入软件这个圈子。于是想想职业的道路还能往哪个方向发展，工作了这么多年主要负责网络和网络安全，也许在这个方向可以尝试一把。  
+于是去年10月报名学习了HCIE R&S，也在今年初学完了第一轮，本想年后开始考试，争取早日拿上证书。然而，因为Covid-19，整个考试也被延后。在学习华为数通的过程中，也在了解网络的发展趋势，即渐渐的向SDN，SDWAN发展。未来的趋势就是控制平面与转发平面的进一步的分离，更合理细致化的流量转发将由软件平面控制。所以这么想，网络、软件还是一家。  
+学习的过程也是一个自我了解的过程。我发现自己不管从事哪个行业，哪种工作，总是希望创造一些新颖的东西。寻找事物发展的规律。所以，未来仍可期，不忘初心，方得始终！
+
+
+

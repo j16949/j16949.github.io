@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Python正则表达式实现Word题库转Excel - My page - Walter White</title>
-	<meta name="description" content="利用Python正则表达式，匹配现存Word题库中的题目并转为Excel">
+	<title>一年HCIE(R&S)回忆 - My page - Walter White</title>
+	<meta name="description" content="经过一年HCIE(R&S)的学习，终于取得了HCIE的证书，谈不上辛酸刻苦，但也付出了很多努力">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
@@ -52,35 +52,20 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/post-7.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/the_way.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">Python正则表达式实现Word题库转Excel</h1>
-          <div class="page-date"><time datetime="2020-03-30 21:21:00 +0800">2020, Mar 30</time></div>
+          <h1 class="page-title">一年HCIE(R&S)回忆</h1>
+          <div class="page-date"><time datetime="2020-08-30 21:58:00 +0800">2020, Aug 30</time></div>
         </div>
         <style type="text/css">
 p{ line-height: 170% }
 </style>
 
-<!--为表格样式添加边框-->
-<style>
-	  table{
-	    border-left:1px solid #000000;border-top:1px solid #000000;
-	    width: 100%;
-	    word-wrap:break-word; word-break:break-all;
-	  }
-	  table th{
-	  text-align:center;
-	  }
-	  table th,td{
-	    border-right:1px solid #000000;border-bottom:1px solid #000000;
-	  }
-</style>
-
 <blockquote>
-  <h3 id="利用python正则表达式匹配现存word题库中的题目并转为excel">利用Python正则表达式，匹配现存Word题库中的题目并转为Excel。</h3>
+  <h3 id="经过一年hciers的学习终于取得了hcie的证书谈不上辛酸刻苦但也付出了很多努力谨以此文记录这一年中学习的点点滴滴">经过一年HCIE(R&amp;S)的学习，终于取得了HCIE的证书，谈不上辛酸刻苦，但也付出了很多努力，谨以此文记录这一年中学习的点点滴滴。</h3>
 </blockquote>
 
 <p><br />
@@ -88,128 +73,25 @@ p{ line-height: 170% }
 导航：</p>
 
 <ol>
-  <li><a href="#title1">背景介绍</a></li>
-  <li><a href="#title2">面临的问题</a></li>
-  <li><a href="#title3">单选</a></li>
-  <li><a href="#title4">多选</a></li>
-  <li><a href="#title5">判断</a></li>
-  <li><a href="#title6">简答</a></li>
-  <li><a href="#title7">总结</a></li>
+  <li><a href="#title1">证书</a></li>
+  <li><a href="#title2">我为什么要考HCIE(R&amp;S)</a></li>
+  <li><a href="#title3">学习过程</a></li>
+  <li><a href="#title4">备考过程</a></li>
+  <li><a href="#title5">写在最后</a></li>
 </ol>
 
 <p><span id="title1"></span></p>
-<h3 id="一-背景介绍">一. 背景介绍</h3>
+<h3 id="一-证书">一. 证书</h3>
 
-<p>单位由于新建了一套生产运行系统，原来的题库已经过于老旧，于是要求各个科室整理出一套适用于新系统的题库。单位给出了Excel题库的格式如下</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>题目类别</th>
-      <th>知识点</th>
-      <th>题目类型</th>
-      <th>题目编号</th>
-      <th>题目名称</th>
-      <th>题目答案</th>
-      <th>选项A</th>
-      <th>选项B</th>
-      <th>选项C</th>
-      <th>选项D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>应知应会</td>
-      <td>所属系统名称</td>
-      <td>1（单选）</td>
-      <td>自由编号数字类型</td>
-      <td>题干的内容</td>
-      <td>填写答案内容，而不是选项</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td> </td>
-      <td>2（判断）</td>
-      <td> </td>
-      <td> </td>
-      <td>填写T或者F</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td> </td>
-      <td>3（简答）</td>
-      <td> </td>
-      <td> </td>
-      <td>填写答案</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>例子如下</td>
-      <td> </td>
-      <td>4（多选）</td>
-      <td> </td>
-      <td> </td>
-      <td>填写答案选项</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>应知应会</td>
-      <td>自动转报系统</td>
-      <td>1</td>
-      <td>1</td>
-      <td>自动转报系统分为哪几种类型？</td>
-      <td>以上都对</td>
-      <td>答案1</td>
-      <td>答案2</td>
-      <td>答案3</td>
-      <td>答案4</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>很荣幸被领导安排了出将近70个单选，20个多选，20个判断和20个简答。而这些题目其实在新系统建设过程中，我都阶段性的出过，并且有很多之前出的题目可以继续使用。只是他们都是如下所示的Word版本</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.我局使用的准入技术是（C）  
-A.portal                                      B. 802.11
-C.802.1x                                      D.802.1n
-
-2.网线线序常见有T568A，T568B两种标准，他们的线序是（ AB）
-A.白橙、橙、白绿、蓝、白蓝、绿、白棕、棕
-B.白绿、绿、白橙、蓝、白蓝、橙、白棕、棕
-C.白绿、绿、白橙、蓝、白棕、棕、白蓝、橙
-D.白棕、棕、白绿、绿、白橙、蓝、白蓝、橙
-
-3.用户可以自由选择自用终端登陆管理信息网络或是互联网。（ X )
-
-4.登录一台华为交换机在端口开关准入配置dot1x
-答：登陆交换机→进入系统视图→进入接口视图→dot1x enable(开启准入)；4 undo dot1x enable（关闭准入)
-</code></pre></div></div>
-<p>那么我要做的就是将这些已经出的题目整理到这个Excel中。由于题目量较大，手动整理工作量较大且枯燥。联想到之前学Python爬虫时，可以将一些存在共性的内容整理到一起。于是利用Python的re正则表达式，匹配出选项和答案，自动整理到Excel题库中。</p>
+<p><img src="/assets/img/hcie.jpg" alt="截图" /></p>
 
 <p><span id="title2"></span></p>
-<h3 id="二-面临的问题">二. 面临的问题</h3>
-<p>由于是不同时间零散出的题目，存在像第单选题1中B选项后带空格的，多选题2中中英文括号混用，判断题3中“T，F，√，X“各种字符的问题。主要如下：</p>
-<ol>
-  <li>如何精确匹配一道题目</li>
-  <li>如何去除多余空格</li>
-  <li>如何解决中英文符号，特别是中英文括号混用问题</li>
-  <li>如何解决题目格式不规范，如大小写A，a;选项为<code class="highlighter-rouge">A.</code><code class="highlighter-rouge">A、</code></li>
-</ol>
+<h3 id="二-我为什么要考hciers">二. 我为什么要考HCIE(R&amp;S)</h3>
 
-<p>下面分别展示如何将单选，多选，判断和简答由Word格式转换为Excel,并在转换的过程中解决上述问题。(以下代码运行与Pyhton3.8)</p>
+<p>  从毕业后到现在，我在现有单位已经工作了五个年头。这五年一直从事着OA，也就是IT运维方面的工作，说白了也就是装装电脑，拉拉网线，修个打印机等等类似的工作。其实从我学的软件工程专业看，这并不是理想的工作。然而，之前我一直满足于现状，并不在乎自己做的是什么。直到去年，看着往日的同学研究生毕业的毕业，本科就参加工作的人也在互联网领域，像阿里，拼多多和小红书等等的企业工作。自己与他们的差距越来越大，不只是薪资上的，更多的是发展前途。<br />
+  于是我去年自学了Python，开发岗海投了一些企业，但石沉大海。由于在单位参加过一次CTF比赛，就又投了一些网络安全方面的职位，但通过面试的过程发现自己所认知的不过是冰山一角。唯一通过初次面试的，是一次参加H3C的文档员，也就是写产品文档和案例的工作。复试时，面试官说的很诚恳，点明了我现在想直接走回老路基本是不可能的，而且由于这几年的工作经验其实在理论上并没有什么深入，给我开出的offer其实工资和我现在差不多，但工作强度却是现在的1.5倍甚至更多。我当时也在想，我还不想就这样一直坐在办公室写文档，就拒绝了这次机会。<br />
+  经过几个月的面试，我终于认清了自己的处境。为什么一个企业不招聘一个应届本科生而要招你？你有什么优势？你的工作经验对你有什么帮助？其实，与我工作最着边的也就是数通方面了，虽然这方面和那些有很多项目经验的人相比也不值一提，但是对于我自己来说，可能这几年有所积累的也就是网络。<br />
+  去年10月，正好和现单位的同事聊天，得知他在学HCIE，自己有一些厂家也取得了这个证书，感觉还是有些含金量的。相比CCIE，HCIE在国内的认可度还蛮高，毕竟多了面试环节，再加上国内国产化的推进，果断报考了HCIE。</p>
 
 <p><span id="title3"></span></p>
 <h3 id="三-单选">三. 单选</h3>
@@ -418,16 +300,18 @@ D.白棕、棕、白绿、绿、白橙、蓝、白蓝、橙
             
             <a href="/tags#Blog" class="tag">| Blog</a>
             
-            <a href="/tags#Python" class="tag">| Python</a>
+            <a href="/tags#HCIE" class="tag">| HCIE</a>
             
-            <a href="/tags#正则表达式" class="tag">| 正则表达式</a>
+            <a href="/tags#HUAWEI" class="tag">| HUAWEI</a>
+            
+            <a href="/tags#数通" class="tag">| 数通</a>
             
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=Python正则表达式实现Word题库转Excel&url=http://0.0.0.0:4000/Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9E%E7%8E%B0Word%E9%A2%98%E5%BA%93%E8%BD%ACExcel/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://0.0.0.0:4000/Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9E%E7%8E%B0Word%E9%A2%98%E5%BA%93%E8%BD%ACExcel/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://0.0.0.0:4000/Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9E%E7%8E%B0Word%E9%A2%98%E5%BA%93%E8%BD%ACExcel/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=一年HCIE(R&S)回忆&url=http://0.0.0.0:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://0.0.0.0:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://0.0.0.0:4000/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">
