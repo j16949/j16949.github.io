@@ -85,13 +85,13 @@ p{ line-height: 170% }
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">cp fileA fileB</code></p>
+    <p><code class="language-plaintext highlighter-rouge">cp fileA fileB</code></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">vim fileB</code>,然后输入ESC+’:’,<code class="highlighter-rouge">r fileA</code>(即把fileA内容read到fileB)</p>
+    <p><code class="language-plaintext highlighter-rouge">vim fileB</code>,然后输入ESC+’:’,<code class="language-plaintext highlighter-rouge">r fileA</code>(即把fileA内容read到fileB)</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">vim -o fileA fileB</code>（同时编辑两个文件) ,y+G全部复制,ctrl+w,按方向键选择fileA或fileB,p粘贴</p>
+    <p><code class="language-plaintext highlighter-rouge">vim -o fileA fileB</code>（同时编辑两个文件) ,y+G全部复制,ctrl+w,按方向键选择fileA或fileB,p粘贴</p>
   </li>
 </ul>
 
@@ -99,7 +99,7 @@ p{ line-height: 170% }
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">vim fileA</code>,按v进入visual模式，移动方向键，然后y复制</p>
+    <p><code class="language-plaintext highlighter-rouge">vim fileA</code>,按v进入visual模式，移动方向键，然后y复制</p>
   </li>
   <li>
     <p>y+W复制单词，y+$复制到行尾，y+G复制到文件末尾</p>
@@ -137,12 +137,12 @@ w.to_file('grwordcloud.png')'''</span>
 #t=f.read()
 #f.close()
 </span><span class="n">t</span><span class="o">=</span><span class="s">'Linux,bash,vim,code'</span>
-<span class="n">w</span><span class="o">=</span><span class="n">wordcloud</span><span class="o">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">max_words</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">background_color</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span><span class="n">collocations</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">repeat</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">w</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="n">w</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s">'wordcloud.jpg'</span><span class="p">)</span></code></pre></figure>
+<span class="n">w</span><span class="o">=</span><span class="n">wordcloud</span><span class="p">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">max_words</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">background_color</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span><span class="n">collocations</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">repeat</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">w</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">w</span><span class="p">.</span><span class="n">to_file</span><span class="p">(</span><span class="s">'wordcloud.jpg'</span><span class="p">)</span></code></pre></figure>
 
 <blockquote>
-  <p>!!!如果想让一个词重复多次，需要设置 <code class="highlighter-rouge">wordcloud.WordCloud(repeat=True)</code> !!!</p>
+  <p>!!!如果想让一个词重复多次，需要设置 <code class="language-plaintext highlighter-rouge">wordcloud.WordCloud(repeat=True)</code> !!!</p>
 </blockquote>
 
 
@@ -195,6 +195,10 @@ w.to_file('grwordcloud.png')'''</span>
   <div class="recent-list">
     
       
+        <a href="/%E6%88%90%E5%8A%9F%E5%8D%87%E7%BA%A7ubuntu20/" class="recent-item" style="background: url(/assets/img/post9.jpg) center no-repeat; background-size: cover;"><span>成功升级ubuntu20</span></a>
+      
+    
+      
         <a href="/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" class="recent-item" style="background: url(/assets/img/the_way.jpg) center no-repeat; background-size: cover;"><span>一年HCIE(R&S)回忆</span></a>
       
     
@@ -204,10 +208,6 @@ w.to_file('grwordcloud.png')'''</span>
     
       
         <a href="/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="recent-item" style="background: url(/assets/img/post-5.jpg) center no-repeat; background-size: cover;"><span>The Linux Command Line 学习笔记</span></a>
-      
-    
-      
-        <a href="/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" class="recent-item" style="background: url(/assets/img/britishforest1.jpg) center no-repeat; background-size: cover;"><span>交换机MAC地址查询总结</span></a>
       
     
   </div>

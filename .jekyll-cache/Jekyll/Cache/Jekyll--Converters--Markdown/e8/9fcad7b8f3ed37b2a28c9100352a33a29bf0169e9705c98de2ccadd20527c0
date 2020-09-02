@@ -1,0 +1,86 @@
+I"�<style type="text/css">
+p{ line-height: 170% }
+</style>
+
+<blockquote>
+  <h3 id="工欲善其事必先利其器本文总结一下平时bash和vim等使用的技巧吧">工欲善其事，必先利其器。本文总结一下平时bash和vim等使用的技巧吧。</h3>
+</blockquote>
+
+<p><br />
+<br />
+导航：</p>
+
+<ol>
+  <li><a href="#title1">复制文件或内容</a></li>
+  <li><a href="#title2">实用快捷键</a></li>
+  <li><a href="#title3">关于本篇博客</a></li>
+</ol>
+
+<p><span id="title1"></span></p>
+<h3 id="一-复制文件或内容">一. 复制文件或内容</h3>
+
+<p>1.复制文件</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">cp fileA fileB</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">vim fileB</code>,然后输入ESC+’:’,<code class="language-plaintext highlighter-rouge">r fileA</code>(即把fileA内容read到fileB)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">vim -o fileA fileB</code>（同时编辑两个文件) ,y+G全部复制,ctrl+w,按方向键选择fileA或fileB,p粘贴</p>
+  </li>
+</ul>
+
+<p>2.复制内容</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">vim fileA</code>,按v进入visual模式，移动方向键，然后y复制</p>
+  </li>
+  <li>
+    <p>y+W复制单词，y+$复制到行尾，y+G复制到文件末尾</p>
+  </li>
+</ul>
+
+<p><span id="title2"></span></p>
+<h3 id="二-实用快捷键">二. 实用快捷键</h3>
+
+<p>1.Ctrl+d 选择下一个相同元素(code,sublime可用)</p>
+
+<p><span id="title3"></span></p>
+<h3 id="三关于本篇博客">三.关于本篇博客</h3>
+
+<p>可以看到最上方的图片使用了词云,代码如下：</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#wordCloud.py
+</span><span class="kn">import</span> <span class="nn">jieba</span>
+<span class="kn">import</span> <span class="nn">wordcloud</span>
+<span class="kn">from</span>  <span class="nn">imageio</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="c1">#中文
+</span><span class="s">'''mask=imread('fivestart.jpg')
+f=open('新时代中国特色社会主义.txt','r',encoding='utf-8')
+t=f.read()
+f.close()
+ls=jieba.lcut(t)
+txt=' '.join(ls)
+w=wordcloud.WordCloud(font_path='msyh.ttc',max_words=99,mask=mask,background_color='white')
+w.generate(txt)
+w.to_file('grwordcloud.png')'''</span>
+
+<span class="c1">#英文
+</span><span class="n">mask</span><span class="o">=</span><span class="n">imread</span><span class="p">(</span><span class="s">'sun.jpg'</span><span class="p">)</span>
+<span class="c1">#f=open('words.txt','r')
+#t=f.read()
+#f.close()
+</span><span class="n">t</span><span class="o">=</span><span class="s">'Linux,bash,vim,code'</span>
+<span class="n">w</span><span class="o">=</span><span class="n">wordcloud</span><span class="p">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">max_words</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">background_color</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span><span class="n">collocations</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">repeat</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">w</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">w</span><span class="p">.</span><span class="n">to_file</span><span class="p">(</span><span class="s">'wordcloud.jpg'</span><span class="p">)</span></code></pre></figure>
+
+<blockquote>
+  <p>!!!如果想让一个词重复多次，需要设置 <code class="language-plaintext highlighter-rouge">wordcloud.WordCloud(repeat=True)</code> !!!</p>
+</blockquote>
+
+:ET

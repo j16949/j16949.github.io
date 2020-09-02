@@ -1,0 +1,19 @@
+---
+layout: post
+title:  成功升级ubuntu20
+date:   2020-09-02 21:58:00 +0800
+description: 成功升级ubuntu20 # Add post description (optional)
+img: post9.jpg # Add image post (optional)
+tags: [Blog, linux]
+author: Walter White # Add name author (optional)
+---
+<style type="text/css">
+p{ line-height: 170% }
+</style>
+
+>### 成功升级为ubuntu20。
+
+
+
+
+

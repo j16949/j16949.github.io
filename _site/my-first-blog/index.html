@@ -95,11 +95,11 @@ p{ line-height: 170% }
 
 <p>  安装Jekyll 因为Jekyll is a Ruby Gem。所以需要依次安装Ruby,Jekyll和bundler</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install ruby-full
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install ruby-full
 gem install jekyll bundler
 </code></pre></div></div>
 
-<p>  然后我们可以开始新建一个Jekyll博客，或者FORK一个优秀的模板。FORK时需要注意对方Gemfile里的plugins,使用<code class="highlighter-rouge">bundle install</code>来安装所有需要的plugins，然后<code class="highlighter-rouge">bundle exec jekyll serve</code>即可开启服务，如需开启多个jekyll serve 可加<code class="highlighter-rouge">--port xxxx</code>指定端口</p>
+<p>  然后我们可以开始新建一个Jekyll博客，或者FORK一个优秀的模板。FORK时需要注意对方Gemfile里的plugins,使用<code class="language-plaintext highlighter-rouge">bundle install</code>来安装所有需要的plugins，然后<code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code>即可开启服务，如需开启多个jekyll serve 可加<code class="language-plaintext highlighter-rouge">--port xxxx</code>指定端口</p>
 
 <p>2.Jekyll的使用</p>
 
@@ -115,7 +115,7 @@ gem install jekyll bundler
 
 <p>1.在移动设备上滑动没有惯性</p>
 
-<p>  在搭建完毕后发现在pad或者iphone上浏览此网页滑动非常生涩，没有惯性。之后google后发现是解决此问题需要在css中添加<code class="highlighter-rouge">webkit-overflow-scrolling: touch;</code>。由于此模板是fork的<a href="https://github.com/artemsheludko/adam-blog">adam-blog</a>的，不知道在哪个css模块添加合适，于是我就访问了adam-blog的github.io。但让我惊讶的是，他的网页滑动有惯性！那我就开始怀疑是我更改的哪个位置的代码产生了这个问题，于是我将自己fork的adam-blog的代码和我自己更改后的代码做对比，搜索touch，并没有搜到结果，也有发现问题。这个问题让我非常头大，耗费了近一个小时。最后在调试彼此的网页后发现，adam已经添加了<code class="highlighter-rouge">webkit-overflow-scrolling: touch;</code>。我错在是拿自己两年前fork的代码和自己更改的代码做的对比，这个BUG在去年修复的…….</p>
+<p>  在搭建完毕后发现在pad或者iphone上浏览此网页滑动非常生涩，没有惯性。之后google后发现是解决此问题需要在css中添加<code class="language-plaintext highlighter-rouge">webkit-overflow-scrolling: touch;</code>。由于此模板是fork的<a href="https://github.com/artemsheludko/adam-blog">adam-blog</a>的，不知道在哪个css模块添加合适，于是我就访问了adam-blog的github.io。但让我惊讶的是，他的网页滑动有惯性！那我就开始怀疑是我更改的哪个位置的代码产生了这个问题，于是我将自己fork的adam-blog的代码和我自己更改后的代码做对比，搜索touch，并没有搜到结果，也有发现问题。这个问题让我非常头大，耗费了近一个小时。最后在调试彼此的网页后发现，adam已经添加了<code class="language-plaintext highlighter-rouge">webkit-overflow-scrolling: touch;</code>。我错在是拿自己两年前fork的代码和自己更改的代码做的对比，这个BUG在去年修复的…….</p>
 
 <p>  于是我又仔细浏览了adam最近做的修改，并应用的自己的网站上。总结:</p>
 
@@ -130,7 +130,7 @@ gem install jekyll bundler
 
 <p>  由于jekyll将地址绑定到了127.0.0.1，导致局域网的其它机器并不能访问它的服务。但实际上只要改变运行jekyll的参数就可以了。</p>
 
-<p><code class="highlighter-rouge">$ jekyll serve -w --host=0.0.0.0</code></p>
+<p><code class="language-plaintext highlighter-rouge">$ jekyll serve -w --host=0.0.0.0</code></p>
 
 <p><span id="title4"></span></p>
 <h3 id="四感谢">四.感谢</h3>
@@ -183,6 +183,10 @@ gem install jekyll bundler
   <div class="recent-list">
     
       
+        <a href="/%E6%88%90%E5%8A%9F%E5%8D%87%E7%BA%A7ubuntu20/" class="recent-item" style="background: url(/assets/img/post9.jpg) center no-repeat; background-size: cover;"><span>成功升级ubuntu20</span></a>
+      
+    
+      
         <a href="/%E4%B8%80%E5%B9%B4HCIE(R&S)%E5%9B%9E%E5%BF%86/" class="recent-item" style="background: url(/assets/img/the_way.jpg) center no-repeat; background-size: cover;"><span>一年HCIE(R&S)回忆</span></a>
       
     
@@ -192,10 +196,6 @@ gem install jekyll bundler
     
       
         <a href="/The-Linux-Command-Line-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="recent-item" style="background: url(/assets/img/post-5.jpg) center no-repeat; background-size: cover;"><span>The Linux Command Line 学习笔记</span></a>
-      
-    
-      
-        <a href="/%E4%BA%A4%E6%8D%A2%E6%9C%BAMAC%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93/" class="recent-item" style="background: url(/assets/img/britishforest1.jpg) center no-repeat; background-size: cover;"><span>交换机MAC地址查询总结</span></a>
       
     
   </div>

@@ -1,0 +1,23 @@
+I"L<style type="text/css">
+p{ line-height: 170% }
+</style>
+
+<!--为表格样式添加边框-->
+<style>
+	  table{
+	    border-left:1px solid #000000;border-top:1px solid #000000;
+	    width: 100%;
+	    word-wrap:break-word; word-break:break-all;
+	  }
+	  table th{
+	  text-align:center;
+	  }
+	  table th,td{
+	    border-right:1px solid #000000;border-bottom:1px solid #000000;
+	  }
+</style>
+
+<blockquote>
+  <h3 id="利用python正则表达式匹配现存word题库中的题目并转为excel">利用Python正则表达式，匹配现存Word题库中的题目并转为Excel。</h3>
+</blockquote>
+:ET

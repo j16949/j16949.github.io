@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "成功升级ubuntu20",
+      "category" : "",
+      "tags"     : "Blog, linux",
+      "url"      : "/%E6%88%90%E5%8A%9F%E5%8D%87%E7%BA%A7ubuntu20/",
+      "date"     : "2020-09-02 21:58:00 +0800"
+    } ,
+  
+    {
       "title"    : "一年HCIE(R&amp;S)回忆",
       "category" : "",
       "tags"     : "Blog, HCIE, HUAWEI, 数通",

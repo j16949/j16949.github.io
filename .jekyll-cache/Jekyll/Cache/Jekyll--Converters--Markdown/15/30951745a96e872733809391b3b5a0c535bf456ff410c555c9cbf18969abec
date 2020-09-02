@@ -1,0 +1,193 @@
+I"�+<style type="text/css">
+p{ line-height: 170% }
+</style>
+
+<blockquote>
+  <h3 id="由于工作中经常需要查询设备mac以定位设备或解决问题因此总结一下mac查找办法">由于工作中经常需要查询设备mac，以定位设备或解决问题，因此总结一下mac查找办法。</h3>
+</blockquote>
+
+<p><br />
+<br />
+导航：</p>
+
+<ol>
+  <li><a href="#title1">huawei</a></li>
+  <li><a href="#title2">h3c</a></li>
+  <li><a href="#title3">cisco</a></li>
+  <li><a href="#title4">通用</a></li>
+</ol>
+
+<p><span id="title1"></span></p>
+<h3 id="一-huawei">一. huawei</h3>
+
+<p>	<strong>1、查看系统MAC</strong></p>
+<p>
+	1）盒式交换机：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display bridge mac-add </font><br />
+	System bridge MAC address: xxxx-xxxx-xxxx</p>
+<p>
+	2）框式交换机：</p>
+<p>
+	&lt;S9303&gt;<font style="color: #0000ff">display system-mac </font><br />
+	MAC-num&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :1<br />
+	Index&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAC Addr<br />
+	----------------------------<br />
+	default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxxx-xxxx-xxxx<br />
+	<br />
+	current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxxx-xxxx-xxxx</p>
+<p>
+	<strong>2、查看接口MAC</strong></p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display interface GigabitEthernet0/0/10 </font><br />
+	GigabitEthernet0/0/10 current state : UP<br />
+	Line protocol current state : UP<br />
+	Description:<br />
+	Switch Port, Link-type : trunk(configured),<br />
+	PVID :&nbsp;&nbsp;&nbsp; 1, TPID : 8100(Hex), The Maximum Frame Length is 1600<br />
+	IP Sending Frames&#39; Format is PKTFMT_ETHNT_2, <font style="color: #0000ff">Hardware address is xxxx-xxxx-xxxx </font><br />
+	Current system time: 2015-03-02 10:50:43+08:00<br />
+	Port Mode: COMMON COPPER<br />
+	Speed : 1000,&nbsp;&nbsp; Loopback: INTERNAL<br />
+	Duplex: FULL,&nbsp;&nbsp; Negotiation: DISABLE<br />
+	Mdi&nbsp;&nbsp; : AUTO,&nbsp;&nbsp; Flow-control: DISABLE<br />
+	Last 300 seconds input rate 480 bits/sec, 0 packets/sec<br />
+	Last 300 seconds output rate 480 bits/sec, 0 packets/sec<br />
+	Input peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47<br />
+	Output peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47<br />
+	Input:&nbsp; 510225 packets, 80014227 bytes<br />
+	&nbsp; Unicast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Multicast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 510225<br />
+	&nbsp; Broadcast:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Jumbo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Discard:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Pause:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Frames:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	<br />
+	&nbsp; Total Error:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; CRC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Giants:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Jabbers:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; Fragments:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; Runts:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,&nbsp; DropEvents:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />
+	&nbsp; ---- More ----</p>
+<p>
+	<strong>3、查看设备学习到的mac表项</strong></p>
+<p>
+	1）查看整机所有类型mac地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address&nbsp;</font></p>
+<p>
+	2）查看某端口下mac地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address GigabitEthernet 0/0/X</font></p>
+<p>
+	3）查看系统所有动态MAC地址表项：</p>
+<p>
+	&lt;S5700&gt;<font style="color: #0000ff">display mac-address dynamic </font></p>
+<p>
+	此处dynamic可以替换为blackhole、static、security、sticky、summary分别查看黑洞MAC、静态MAC、安全动态MAC、sticky MAC、MAC表项汇总信息。</p>
+<p>
+	由于内容较多，此处不再赘述；</p>
+<p>
+	欲了解更多MAC相关命令，请下载产品文档，在如下路径获取更多信息：参考&mdash;&mdash;以太网交换命令&mdash;&mdash;MAC表配置命令。</p>
+
+<p><span id="title2"></span></p>
+<h3 id="二-h3c">二. h3c</h3>
+
+<p><strong>1.查看系统mac</strong></p>
+
+<p>&lt;h3c&gt;<font style="color: #0000ff">dis device manuinfo</font></p>
+
+<p><strong>2.查看接口mac</strong></p>
+
+<p>&lt;h3c&gt;<font style="color: #0000ff">dis int vlanif 2</font></p>
+
+<blockquote>
+  <p>用Wireshark抓包，当数据包跨网段时，source mac时常就是interface vlanif的地址(网关地址)</p>
+</blockquote>
+
+<p><span id="title3"></span></p>
+<h3 id="三-cisco">三. cisco</h3>
+
+<p><strong>1.查看系统MAC</strong></p>
+
+<figure class="highlight"><pre><code class="language-cisco" data-lang="cisco">Switch#show version 
+Cisco IOS Software, C2960 Software (C2960-LANBASE-M), Version 12.2(25)FX, RELEASE SOFTWARE (fc1)
+Copyright (c) 1986-2005 by Cisco Systems, Inc.
+Compiled Wed 12-Oct-05 22:05 by pt_team
+
+ROM: C2960 Boot Loader (C2960-HBOOT-M) Version 12.2(25r)FX, RELEASE SOFTWARE (fc4)
+
+System returned to ROM by power-on
+
+Cisco WS-C2960-24TT (RC32300) processor (revision C0) with 21039K bytes of memory.
+
+
+24 FastEthernet/IEEE 802.3 interface(s)
+2 Gigabit Ethernet/IEEE 802.3 interface(s)
+
+63488K bytes of flash-simulated non-volatile configuration memory.
+Base ethernet MAC Address       : 0010.11DA.628C
+Motherboard assembly number     : 73-9832-06
+Power supply part number        : 341-0097-02
+Motherboard serial number       : FOC103248MJ
+Power supply serial number      : DCA102133JA
+Model revision number           : B0
+Motherboard revision number     : C0
+Model number                    : WS-C2960-24TT
+System serial number            : FOC1033Z1EY
+Top Assembly Part Number        : 800-26671-02
+Top Assembly Revision Number    : B0
+Version ID                      : V02
+CLEI Code Number                : COM3K00BRA
+Hardware Board Revision Number  : 0x01
+
+
+Switch   Ports  Model              SW Version              SW Image
+------   -----  -----              ----------              ----------
+*    1   26     WS-C2960-24TT      12.2                    C2960-LANBASE-M
+
+Configuration register is 0xF</code></pre></figure>
+
+<p><strong>2.查看接口MAC</strong></p>
+
+<figure class="highlight"><pre><code class="language-cisco" data-lang="cisco">Switch#show int f0/1
+FastEthernet0/1 is down, line protocol is down (disabled)
+  Hardware is Lance, address is 0001.6459.4101 (bia 0001.6459.4101)
+ BW 100000 Kbit, DLY 1000 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Half-duplex, 100Mb/s
+  input flow-control is off, output flow-control is off
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:08, output 00:00:05, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue :0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     956 packets input, 193351 bytes, 0 no buffer
+     Received 956 broadcasts, 0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort
+     0 watchdog, 0 multicast, 0 pause input
+     0 input packets with dribble condition detected
+     2357 packets output, 263570 bytes, 0 underruns
+     0 output errors, 0 collisions, 10 interface resets
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier
+     0 output buffer failures, 0 output buffers swapped out</code></pre></figure>
+
+<p><span id="title4"></span></p>
+<h3 id="四总结">四.总结</h3>
+
+<p>1.cisco的物理设备存在主机MAC地址。三层接口和二层接口都存在按规律每次增加1的MAC地址，但是它们并不相连:<br />
+比如f0/1 mac:XXXX-XXXX-XXX1,f0/2 mac :XXXX-XXXX-XXX2；int vlan 2 mac:YYYY-YYYY-YYY1,int vlan 3 mac:YYYY-YYYY-YYY2;其中X和Y分别代表不同的数。三层接口存在MAC很好理解，为了标识存在不同IP地址的不同接口之间的MAC,以此使得在二层可以找到准确的接口，将数据包发送到目的接口。二层接口存在地址，网上有说法CISCO是为了STP中BPDU报文使用，具体原因有待研究。而且，CISCO的三层MAC地址可以手动更改，小部分二层地址可以手动更改。<br />
+引用CISCO原文：‘For L2 switches, there are mac addresses for different functions (to be able to communicate (when we want to telnet, ping or do snmp to the switch) and spanning tree (to form the bridge ID).’</p>
+
+<p>2.huawei的物理设备存在主机MAC地址。三层接口存在地址，地址依次增加1。VLANIF也有MAC地址，存在顺序，但是实际使用中发现有重复（疑惑点）。直接配置IP的Eth-Trunk和主机MAC地址相同（疑惑点）。其他Eth-Trunk和主机MAC地址相同。二层接口的物理地址和主机MAC地址相同。LoopBack接口没有物理地址。</p>
+
+<p>3.h3c的物理设备存在MAC地址。三层二层都有MAC地址，基本三层（无论物理还是VLANIF）共用一个地址。二层共用一个地址。</p>
+
+<blockquote>
+  <h3 id="注意当一台设备未通过8021x认证其mac无法显示在dis-mac-address中除非配置了guest-vlan其显示在vlan-800中待验证">！！！注意：当一台设备未通过802.1x认证，其mac无法显示在<code class="language-plaintext highlighter-rouge">dis mac-address</code>中，除非配置了guest-vlan，其显示在vlan 800中(待验证)</h3>
+</blockquote>
+
+:ET
