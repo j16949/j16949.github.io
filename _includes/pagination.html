@@ -1,8 +1,26 @@
-<div class="pagination clearfix">
+<!--靠右显示页码-->
+<style>
+  .paginationLayout {
+    float: right;
+    white-space: nowrap;
+}
+</style>
+<div class="pagination clearfix paginationLayout">
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous</a>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous&nbsp&nbsp</a>
   {% endif %}
+  <span class="pages"> 
+    {% for count in (1..paginator.total_pages) %}
+      <span class="page">
+        {% if count == paginator.page %}
+          <span class="current-page">{{ count }}</span>
+        {% else %}
+          <a href="/blog/page{{ count }}">{{ count }}</a>
+        {% endif %}
+      </span>
+    {% endfor %}
+  </span>
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next">Next <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next">&nbsp&nbspNext <i class="fa fa-angle-right" aria-hidden="true"></i></a>
   {% endif %}
 </div>
