@@ -14,6 +14,8 @@
       <span class="page">
         {% if count == paginator.page %}
           <span class="current-page">{{ count }}</span>
+        {% elsif count == 1 %}
+          <a href="/blog/">{{ count }}</a>
         {% else %}
           <a href="/blog/page{{ count }}">{{ count }}</a>
         {% endif %}

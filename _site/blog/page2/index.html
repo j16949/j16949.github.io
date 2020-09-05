@@ -177,12 +177,40 @@
   </div>
 </div>
 
-  <div class="pagination clearfix">
+  <!--靠右显示页码-->
+<style>
+  .paginationLayout {
+    float: right;
+    white-space: nowrap;
+}
+</style>
+<div class="pagination clearfix paginationLayout">
   
-    <a href="/blog/" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous</a>
+    <a href="/blog/" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous&nbsp&nbsp</a>
   
+  <span class="pages"> 
+    
+      <span class="page">
+        
+          <a href="/blog/page1">1</a>
+        
+      </span>
+    
+      <span class="page">
+        
+          <span class="current-page">2</span>
+        
+      </span>
+    
+      <span class="page">
+        
+          <a href="/blog/page3">3</a>
+        
+      </span>
+    
+  </span>
   
-    <a href="/blog/page3/" class="next">Next <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    <a href="/blog/page3/" class="next">&nbsp&nbspNext <i class="fa fa-angle-right" aria-hidden="true"></i></a>
   
 </div>
 
