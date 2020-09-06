@@ -64,7 +64,7 @@
         
         <a href="/tags#Mountains" class="tag">|&#32;Mountains</a>
         
-        <a href="/tags#jekyll" class="tag">|&#32;jekyll</a>
+        <a href="/tags#Jekyll" class="tag">|&#32;Jekyll</a>
         
         <a href="/my-first-blog/" class="post-card-link"><h3 class="post-card-title">My first blog</h3></a>
       </div>
@@ -177,40 +177,75 @@
   </div>
 </div>
 
-  <!--靠右显示页码-->
+  <!-- 改写css中pagination,使其居中 -->
 <style>
   .paginationLayout {
-    float: right;
-    white-space: nowrap;
+    text-align: center;
+    position: relative;
 }
+
+  .pagination .previous {
+    float: none;
+  }
+
+  .pagination .next {
+    float: none;
+  }
+
+  .paginationLayout a {
+      margin: 2px -2px;
+      color: black;
+      padding: 5px 10px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      display: inline-block;
+  }
+
+  .paginationLayout a.active {
+      background-color: #00bfff;
+      color: white;
+      border: 1px solid #00bfff;
+  }
+
+  .paginationLayout a:hover:not(.active) {background-color: #ddd;}
+
 </style>
 <div class="pagination clearfix paginationLayout">
   
-    <a href="/blog/" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous&nbsp&nbsp</a>
+    <a href="/blog/" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
   
+
   <span class="pages"> 
     
-      <span class="page">
-        
-          <a href="/blog/page1">1</a>
-        
-      </span>
+      <a class="page-numbers" href="../">1</a>
     
-      <span class="page">
-        
-          <span class="current-page">2</span>
-        
-      </span>
     
-      <span class="page">
-        
-          <a href="/blog/page3">3</a>
-        
-      </span>
+    
+    
+    
+    
+
+    
+    
+
+    
+      
+        <a class="page-numbers current active">2</a>
+      
+    
+
+    
+    
+    
+
+    
+      <a class="page-numbers" href="/blog/page3/">3</a>
     
   </span>
   
-    <a href="/blog/page3/" class="next">&nbsp&nbspNext <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+  
+    <a href="/blog/page3/" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
   
 </div>
 

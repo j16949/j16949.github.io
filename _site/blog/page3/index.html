@@ -105,38 +105,73 @@
   </div>
 </div>
 
-  <!--靠右显示页码-->
+  <!-- 改写css中pagination,使其居中 -->
 <style>
   .paginationLayout {
-    float: right;
-    white-space: nowrap;
+    text-align: center;
+    position: relative;
 }
+
+  .pagination .previous {
+    float: none;
+  }
+
+  .pagination .next {
+    float: none;
+  }
+
+  .paginationLayout a {
+      margin: 2px -2px;
+      color: black;
+      padding: 5px 10px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      display: inline-block;
+  }
+
+  .paginationLayout a.active {
+      background-color: #00bfff;
+      color: white;
+      border: 1px solid #00bfff;
+  }
+
+  .paginationLayout a:hover:not(.active) {background-color: #ddd;}
+
 </style>
 <div class="pagination clearfix paginationLayout">
   
-    <a href="/blog/page2/" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous&nbsp&nbsp</a>
+    <a href="/blog/page2/" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
   
+
   <span class="pages"> 
     
-      <span class="page">
-        
-          <a href="/blog/page1">1</a>
-        
-      </span>
+      <a class="page-numbers" href="../">1</a>
     
-      <span class="page">
-        
-          <a href="/blog/page2">2</a>
-        
-      </span>
     
-      <span class="page">
-        
-          <span class="current-page">3</span>
-        
-      </span>
+    
+    
+    
+    
+
+    
+    
+
+    
+      
+        <a class="page-numbers" href="/blog/page2">2</a>
+      
+    
+
+    
+    
+    
+
+    
+      <a class="page-numbers current active">3</a>
     
   </span>
+  
   
 </div>
 

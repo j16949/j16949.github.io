@@ -4,7 +4,7 @@ title:  一年HCIE(R&S)回忆
 date:   2020-08-30 21:58:00 +0800
 description: 经过一年HCIE(R&S)的学习，终于取得了HCIE的证书，谈不上辛酸刻苦，但也付出了很多努力 # Add post description (optional)
 img: the_way.jpg # Add image post (optional)
-tags: [Blog, HCIE, HUAWEI,数通]
+tags: [Blog, HCIE, huawei,数通]
 author: Walter White # Add name author (optional)
 ---
 <style type="text/css">

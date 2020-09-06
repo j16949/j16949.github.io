@@ -4,7 +4,7 @@ title:  My first blog
 date:   2019-07-15 22:17:20 +0800
 description: I have finally finished buliding my website,WOW! # Add post description (optional)
 img: sun_behind_the_mountain.jpg # Add image post (optional)
-tags: [Blog, Mountains , jekyll]
+tags: [Blog, Mountains , Jekyll]
 author: Walter White # Add name author (optional)
 ---
 <style type="text/css">

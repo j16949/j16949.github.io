@@ -55,16 +55,18 @@
   
   <li>
     <div class="post-card">
-      <a href="/%E6%88%90%E5%8A%9F%E5%8D%87%E7%BA%A7ubuntu20/" class="post-card-image" style="background-image: url( /assets/img/post9.jpg )">
+      <a href="/Jekyll%E5%88%86%E9%A1%B5%E4%BC%98%E5%8C%96/" class="post-card-image" style="background-image: url( /assets/img/post-9.jpg )">
       </a>
 
       <div class="post-card-body">
         
         <a href="/tags#Blog" class="tag">|&#32;Blog</a>
         
-        <a href="/tags#linux" class="tag">|&#32;linux</a>
+        <a href="/tags#Jekyll" class="tag">|&#32;Jekyll</a>
         
-        <a href="/%E6%88%90%E5%8A%9F%E5%8D%87%E7%BA%A7ubuntu20/" class="post-card-link"><h3 class="post-card-title">成功升级ubuntu20</h3></a>
+        <a href="/tags#分页" class="tag">|&#32;分页</a>
+        
+        <a href="/Jekyll%E5%88%86%E9%A1%B5%E4%BC%98%E5%8C%96/" class="post-card-link"><h3 class="post-card-title">Jekyll分页优化</h3></a>
       </div>
 
     </div>
@@ -81,7 +83,7 @@
         
         <a href="/tags#HCIE" class="tag">|&#32;HCIE</a>
         
-        <a href="/tags#HUAWEI" class="tag">|&#32;HUAWEI</a>
+        <a href="/tags#huawei" class="tag">|&#32;huawei</a>
         
         <a href="/tags#数通" class="tag">|&#32;数通</a>
         
@@ -193,38 +195,73 @@
   </div>
 </div>
 
-  <!--靠右显示页码-->
+  <!-- 改写css中pagination,使其居中 -->
 <style>
   .paginationLayout {
-    float: right;
-    white-space: nowrap;
+    text-align: center;
+    position: relative;
 }
+
+  .pagination .previous {
+    float: none;
+  }
+
+  .pagination .next {
+    float: none;
+  }
+
+  .paginationLayout a {
+      margin: 2px -2px;
+      color: black;
+      padding: 5px 10px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      display: inline-block;
+  }
+
+  .paginationLayout a.active {
+      background-color: #00bfff;
+      color: white;
+      border: 1px solid #00bfff;
+  }
+
+  .paginationLayout a:hover:not(.active) {background-color: #ddd;}
+
 </style>
 <div class="pagination clearfix paginationLayout">
   
+
   <span class="pages"> 
     
-      <span class="page">
-        
-          <span class="current-page">1</span>
-        
-      </span>
+      <a class="page-numbers current active">1</a>
     
-      <span class="page">
-        
-          <a href="/blog/page2">2</a>
-        
-      </span>
     
-      <span class="page">
-        
-          <a href="/blog/page3">3</a>
-        
-      </span>
+    
+    
+    
+    
+
+    
+    
+
+    
+      
+        <a class="page-numbers" href="/blog/page2">2</a>
+      
+    
+
+    
+    
+    
+
+    
+      <a class="page-numbers" href="/blog/page3/">3</a>
     
   </span>
   
-    <a href="/blog/page2/" class="next">&nbsp&nbspNext <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+  
+    <a href="/blog/page2/" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
   
 </div>
 

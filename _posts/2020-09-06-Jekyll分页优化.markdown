@@ -1,0 +1,264 @@
+---
+layout: post
+title:  Jekyll分页优化
+date:   2020-09-06 17:35:00 +0800
+description: Jekyll分页优化，设置显示页码分页，优化CSS和响应式布局 # Add post description (optional)
+img: post-9.jpg # Add image post (optional)
+tags: [Blog, Jekyll, 分页]
+author: Walter White # Add name author (optional)
+---
+<style type="text/css">
+p{ line-height: 170% }
+</style>
+<!--为表格样式添加边框-->
+<style>
+	  table{
+	    border-left:1px solid #000000;border-top:1px solid #000000;
+	    width: 100%;
+	    word-wrap:break-word; word-break:break-all;
+	  }
+	  table th{
+	  text-align:center;
+	  }
+	  table th,td{
+	    border-right:1px solid #000000;border-bottom:1px solid #000000;
+	  }
+</style>
+
+>### 原来使用的Jekyll的模板只有previous（上一页）和next（下一页）两种页码链接，现在优化为显示上一页，下一页和首页尾页，包括所在目前所在页面的前后共5页
+
+<br>
+<br>
+导航：
+
+1. [Jekyll分页工具](#title1)
+2. [显示页码的分页实现](#title2)
+3. [响应式优化](#title3)
+
+
+
+
+
+<span id="title1"></span>
+### 一. Jekyll分页工具
+
+Jekyll使用的jekyll-paginate插件来实现分页功能  
+
+#### 1.安装 gem 插件
+{% highlight bash %}
+sudo gem install jekyll-paginate
+{% endhighlight %}
+
+#### 2.开启分页功能
+开启分页功能很简单，只需要在 _config.yml 里的plugins中添加`jekyll-paginate`，并填写每页展示的项目数，和对哪个网站做分页（如我对网站下的/blog做分页）。  
+{% highlight yaml %}
+plugins:
+  - jekyll-paginate
+
+# Paginate
+paginate: 6
+paginate_path: /blog/page:num/
+{% endhighlight %}
+
+#### 3.使用分页
+jekyll的paginate只能在在index.html中使用，所以在blog网站下，即/blog/index.html中使用  
+{% raw %}
+```html
+<ol class="post-card-box clearfix">
+  {% for post in paginator.posts %}
+  <li>
+    <div class="post-card">
+      <a href="{{post.url | prepend: site.baseurl}}" class="post-card-image" style="background-image: url( {{ "/assets/img/" | prepend: site.baseurl | append : post.img}} )">
+      </a>
+
+      <div class="post-card-body">
+        {% for tag in post.tags %}
+        <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">|&#32;{{ tag }}</a>
+        {% endfor %}
+        <a href="{{post.url | prepend: site.baseurl}}" class="post-card-link"><h3 class="post-card-title">{{post.title}}</h3></a>
+      </div>
+
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+```
+{% endraw %}
+
+#### 4.可用的 Liquid 属性
+分页功能插件使得 paginator liquid 对象具有下列属性：
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>page</code></td>
+      <td>当前页码</td>
+    </tr>
+    <tr>
+      <td><code>per_page</code></td>
+      <td>每页文章数量</td>
+    </tr>
+    <tr>
+      <td><code>posts</code></td>
+      <td>当前页的文章列表</td>
+    </tr>
+    <tr>
+      <td><code>total_posts</code></td>
+      <td>总文章数</td>
+    </tr>
+    <tr>
+      <td><code>total_pages</code></td>
+      <td>总页数</td>
+    </tr>
+    <tr>
+      <td><code>previous_page</code></td>
+      <td>
+        上一页页码 或 <code>nil</code>（如果上一页不存在）
+      </td>
+    </tr>
+    <tr>
+      <td><code>previous_page_path</code></td>
+      <td>
+        上一页路径 或 <code>nil</code>（如果上一页不存在）
+      </td>
+    </tr>
+    <tr>
+      <td><code>next_page</code></td>
+      <td>
+        下一页页码 或 <code>nil</code>（如果下一页不存在）
+      </td>
+    </tr>
+    <tr>
+      <td><code>next_page_path</code></td>
+      <td>
+        下一页路径 或 <code>nil</code>（如果下一页不存在）
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<span id="title2"></span>
+### 二. 显示页码的分页实现
+
+要在网页下方显示当前页数正负2页，并显示第一页和最后一页，实现代码如下（参考[Jekyll 使用记录_分页功能](https://cyhour.com/189/)）
+{% raw %}
+```html
+<div class="pagination clearfix paginationLayout">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+  {% endif %}
+
+  <span class="pages"> 
+    {% if paginator.page == 1 %}
+      <a class="page-numbers current active">1</a>
+    {% else %}
+      <a class="page-numbers" href="../">1</a>
+    {% endif %}
+    {% assign pageSize = 2 %}
+    {% assign startPage = paginator.page | minus:pageSize %}
+    {% if 2 > startPage %}
+      {% assign startPage = 2 %}
+    {% endif %}
+    {% assign endPage = paginator.page | plus:pageSize %}
+    {% if endPage >= paginator.total_pages %}
+      {% assign endPage = paginator.total_pages | minus:1 %}
+    {% endif %}
+
+    {% assign pageTemp = pageSize | plus:2 %}
+    {% if paginator.page > pageTemp %}
+      <a class="page-numbers dots">…</a>
+    {% endif %}
+
+    {% for count in (startPage..endPage) %}
+      {% if count == paginator.page %}
+        <a class="page-numbers current active">{{ count }}</a>
+      {% else %}
+        <a class="page-numbers" href="/blog/page{{ count }}">{{ count }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% assign pageTemp1 = pageSize | plus:1 %}
+    {% assign pageTemp = paginator.page | plus:pageTemp1 %}
+    {% if paginator.total_pages > pageTemp %}
+      <a class="page-numbers dots">…</a>
+    {% endif %}
+
+    {% if paginator.page == paginator.total_pages %}
+      <a class="page-numbers current active">{{paginator.total_pages}}</a>
+    {% else %}
+      <a class="page-numbers" href="/blog/page{{paginator.total_pages}}/">{{paginator.total_pages}}</a>
+    {% endif %}
+  </span>
+  
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+  {% endif %}
+</div>
+```
+{% endraw %}
+
+<span id="title3"></span>
+### 三. 响应式优化
+
+为了使网页适应与移动终端，各种屏幕。需要对页码进行优化，基本的页码作为超链接，在移动终端不易触控，所以改写`<a>`的css样式，代码如下:
+{% highlight css %}
+<!-- 改写css中pagination,使其居中 -->
+<style>
+  .paginationLayout {
+    text-align: center;
+    position: relative;
+}
+
+  .pagination .previous {
+    float: none;
+  }
+
+  .pagination .next {
+    float: none;
+  }
+
+  .paginationLayout a {
+      margin: 2px -2px;
+      color: black;
+      padding: 5px 10px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      display: inline-block;
+  }
+
+  .paginationLayout a.active {
+      background-color: #00bfff;
+      color: white;
+      border: 1px solid #00bfff;
+  }
+
+  .paginationLayout a:hover:not(.active) {background-color: #ddd;}
+
+</style>
+{% endhighlight %}
+
+测试时发现页码换行会出现重叠现象，使用`display: inline-block;`解决此问题。[参考文章](https://www.coder.work/article/4132907)  
+
+按钮重叠，因为它们是"inline"元素。内联元素上的垂直填充对周围元素没有影响。有关更多信息，请参见this article on maxdesign.com。  
+
+防止重叠的一种方法是将每个按钮设置为display:inline-block。
+我还建议添加底边距，以在“行”之间创建一些空间。  
+
+内联块：元素生成一个块元素框，该框将随周围内容一起流动，就好像它是单个内嵌框一样（与被替换的元素非常相似）  
+  -display @ MDN  
+
+请记住，将尊重（显示）inline-block元素之间的空白。  
+
+
+> PS:
+
+目前我的博客也就一页多一点，之前的页面都是模板的例子，而分页页码的效果怎么也得7，8页以上才有效果，但是博客的更新速度可能并没有那么快。所以我想这也是为什么jekyll没有针对分页插件作更多属性的原因之一吧。
+
+
+

@@ -1,28 +1,85 @@
-<!--靠右显示页码-->
+<!-- 改写css中pagination,使其居中 -->
 <style>
   .paginationLayout {
-    float: right;
-    white-space: nowrap;
+    text-align: center;
+    position: relative;
 }
+
+  .pagination .previous {
+    float: none;
+  }
+
+  .pagination .next {
+    float: none;
+  }
+
+  .paginationLayout a {
+      margin: 2px -2px;
+      color: black;
+      padding: 5px 10px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      display: inline-block;
+  }
+
+  .paginationLayout a.active {
+      background-color: #00bfff;
+      color: white;
+      border: 1px solid #00bfff;
+  }
+
+  .paginationLayout a:hover:not(.active) {background-color: #ddd;}
+
 </style>
 <div class="pagination clearfix paginationLayout">
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous&nbsp&nbsp</a>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
   {% endif %}
+
   <span class="pages"> 
-    {% for count in (1..paginator.total_pages) %}
-      <span class="page">
-        {% if count == paginator.page %}
-          <span class="current-page">{{ count }}</span>
-        {% elsif count == 1 %}
-          <a href="/blog/">{{ count }}</a>
-        {% else %}
-          <a href="/blog/page{{ count }}">{{ count }}</a>
-        {% endif %}
-      </span>
+    {% if paginator.page == 1 %}
+      <a class="page-numbers current active">1</a>
+    {% else %}
+      <a class="page-numbers" href="../">1</a>
+    {% endif %}
+    {% assign pageSize = 2 %}
+    {% assign startPage = paginator.page | minus:pageSize %}
+    {% if 2 > startPage %}
+      {% assign startPage = 2 %}
+    {% endif %}
+    {% assign endPage = paginator.page | plus:pageSize %}
+    {% if endPage >= paginator.total_pages %}
+      {% assign endPage = paginator.total_pages | minus:1 %}
+    {% endif %}
+
+    {% assign pageTemp = pageSize | plus:2 %}
+    {% if paginator.page > pageTemp %}
+      <a class="page-numbers dots">…</a>
+    {% endif %}
+
+    {% for count in (startPage..endPage) %}
+      {% if count == paginator.page %}
+        <a class="page-numbers current active">{{ count }}</a>
+      {% else %}
+        <a class="page-numbers" href="/blog/page{{ count }}">{{ count }}</a>
+      {% endif %}
     {% endfor %}
+
+    {% assign pageTemp1 = pageSize | plus:1 %}
+    {% assign pageTemp = paginator.page | plus:pageTemp1 %}
+    {% if paginator.total_pages > pageTemp %}
+      <a class="page-numbers dots">…</a>
+    {% endif %}
+
+    {% if paginator.page == paginator.total_pages %}
+      <a class="page-numbers current active">{{paginator.total_pages}}</a>
+    {% else %}
+      <a class="page-numbers" href="/blog/page{{paginator.total_pages}}/">{{paginator.total_pages}}</a>
+    {% endif %}
   </span>
+  
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next">&nbsp&nbspNext <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
   {% endif %}
 </div>
