@@ -322,6 +322,7 @@
 /* 减少代码左缩进 */
 .highlight pre {
   padding-left: 1%;
+}
 
 /* Literal.Number.Integer.Long */
 .css .o,
