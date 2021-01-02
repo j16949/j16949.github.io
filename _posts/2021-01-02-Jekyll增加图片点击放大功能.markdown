@@ -1,0 +1,183 @@
+---
+layout: post
+title:  Jekyll增加图片点击放大功能
+date:   2021-01-02 13:35:00 +0800
+description: Jekyll增加图片点击放大功能，点击网页上的图片，即可放大图片 # Add post description (optional)
+img: post-10.jpg # Add image post (optional)
+tags: [Blog, Jekyll, css, js]
+author: Walter White # Add name author (optional)
+---
+<style type="text/css">
+p{ line-height: 170% }
+</style>
+<!--为表格样式添加边框-->
+
+
+>### 原来使用的Jekyll的模板只能右键点击图片在另一个页面查看原图，现在可以在页面点击图片，直接浏览大图
+
+<br>
+<br>
+导航：
+
+1. [起因](#title1)
+2. [图片放大解决方案](#title2)
+3. [专为 Jekyll 设计的简化版本](#title3)
+
+
+
+
+
+<span id="title1"></span>
+### 一. 起因
+
+父亲整理的了爷爷生前的许多版画和国画等作品，希望可以通过网络平台留念和展示，然而在Jekyll中图片不能直接点击放大，特别是在微信中打开网页，连用双指放大页面也无法实现。所以经过大量搜索，终于找到一个拿来就能可以用的好解决方案。 [图片点击放大，你的网页也能做到！](https://blog.walterlv.com/post/create-click-to-zoom-image-for-web-pages.html#%E6%B7%BB%E5%8A%A0%E6%94%BE%E5%A4%A7%E5%9B%BE%E7%89%87%E7%9A%84-js-%E8%84%9A%E6%9C%AC)这里不得不在多说一句，百度我搜了半天都没找到特别合适的，google一搜就能直接搜到jekyll的解决方案，真是。
+
+
+![测试]({{site.baseurl}}/assets/img/post-10-1.jpg)  
+▲ 测试
+
+<span id="title2"></span>
+### 二. 图片放大解决方案
+
+
+#### 1.创建一个用于放图片的 HTML 节点
+
+如果你是普通的 HTML 网页，可以将下面的片段放入到你的页面中。
+
+```html
+<div id="image-cover-modal" class="image-cover-modal">
+  <img id="image-cover-image" class="image-cover-modal-content">
+  <div id="image-cover-caption"></div>
+</div>
+```
+
+最外层是容器，里面包含一个关闭按钮，一张图片和一个图片标题。
+
+#### 2.为图片的 HTML 节点添加 CSS 样式
+
+```css
+.image-cover-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    position: fixed;
+    z-index: 30;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+    transition: opacity ease 0.3s;
+    pointer-events: none;
+}
+
+.model-shown {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.image-cover-modal-content {
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+#image-cover-caption {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3rem;
+    bottom: 0;
+    line-height: 3rem;
+    text-align: center;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.33);
+}
+
+@media only screen and (max-width: 45rem){
+    .image-cover-modal-content {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+```
+
+#### 3.添加放大图片的 JS 脚本
+
+```js
+// Get the DOM
+var modal = document.getElementById('image-cover-modal');
+var modalImg = document.getElementById("image-cover-image");
+var captionText = document.getElementById("image-cover-caption");
+var span = document.getElementsByClassName("image-cover-close")[0];
+
+// When the user clicks on <span> (x), close the modal
+modal.onclick = function() {
+    this.classList.remove("model-shown");
+}
+
+var i;
+for (i = 0; i < document.images.length; i++) {
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.images[i];
+
+    img.onclick = function(){
+        modal.classList.add("model-shown");
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+}
+```
+
+
+<span id="title3"></span>
+### 三. 专为 Jekyll 设计的简化版本
+
+
+如果你使用 Jekyll 搭建静态网页，那么只需要修改 3 个地方：
+
+- 在 main.css 中添加前面的 css 片段。
+- 在你想要添加放大图片的页面布局（例如 post.html）中添加 {% raw %}`{% include clickable-image.html %}`{% endraw %}。
+- 在 _includes 文件夹中添加一个 clickable-image.html 文件，存放以下内容。
+
+```html
+<div id="image-cover-modal" class="image-cover-modal">
+  <img id="image-cover-image" class="image-cover-modal-content">
+  <div id="image-cover-caption"></div>
+</div>
+<script>
+// Get the DOM
+var modal = document.getElementById('image-cover-modal');
+var modalImg = document.getElementById("image-cover-image");
+var captionText = document.getElementById("image-cover-caption");
+var span = document.getElementsByClassName("image-cover-close")[0];
+
+// When the user clicks on <span> (x), close the modal
+modal.onclick = function() {
+    this.classList.remove("model-shown");
+}
+
+var i;
+for (i = 0; i < document.images.length; i++) {
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.images[i];
+
+    img.onclick = function(){
+        modal.classList.add("model-shown");
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+}
+</script>
+```
+
+
+**参考资料**
+
+[图片点击放大，你的网页也能做到！](https://blog.walterlv.com/post/create-click-to-zoom-image-for-web-pages.html#%E6%B7%BB%E5%8A%A0%E6%94%BE%E5%A4%A7%E5%9B%BE%E7%89%87%E7%9A%84-js-%E8%84%9A%E6%9C%AC)
+

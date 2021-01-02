@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Jekyll增加图片点击放大功能",
+      "category" : "",
+      "tags"     : "Blog, Jekyll, css, js",
+      "url"      : "/Jekyll%E5%A2%9E%E5%8A%A0%E5%9B%BE%E7%89%87%E7%82%B9%E5%87%BB%E6%94%BE%E5%A4%A7%E5%8A%9F%E8%83%BD/",
+      "date"     : "2021-01-02 13:35:00 +0800"
+    } ,
+  
+    {
       "title"    : "Jekyll分页优化",
       "category" : "",
       "tags"     : "Blog, Jekyll, 分页",
