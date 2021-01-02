@@ -12,7 +12,7 @@
   border: 1px solid #607D8B;
   -webkit-border-radius: 3px;
           border-radius: 3px;
-  padding: 0.1rem 0.5rem;
+  padding: 0.1rem 0rem;
 }
 
 .highlight .hll {
@@ -318,6 +318,10 @@
 .highlight .il {
   color: #f60;
 }
+
+/* 减少代码左缩进 */
+.highlight pre {
+  padding-left: 1%;
 
 /* Literal.Number.Integer.Long */
 .css .o,

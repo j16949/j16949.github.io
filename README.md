@@ -2,12 +2,13 @@
 
 此博客记录一些技术和感想 
 
-Blog home page：![https://j16949.github.io/blog/](https://j16949.github.io/blog/)
+Blog home page：![https://j16949.github.io/blog](https://j16949.github.io/blog)
+
 Repositories：![https://github.com/j16949/j16949.github.io](https://github.com/j16949/j16949.github.io)
 
 
 
-Forked from ！[Adam Blog](https://github.com/artemsheludko/adam-blog)
+Forked from ![Adam Blog](https://github.com/artemsheludko/adam-blog)
 
 ![Adam Blog - Imac](https://github.com/artemsheludko/adam-blog/blob/master/assets/img/adam-blog-imac.jpg?raw=true)
 
