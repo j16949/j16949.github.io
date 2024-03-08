@@ -804,9 +804,10 @@ img {
   max-width: 100%;
 }
 
-a {
+/* 不知此处为何强制设置了颜色，且只有一种颜色 */
+/* a {
   color: #87314e;
-}
+} */
 
 blockquote {
   border-left: 3px solid #311e3e;
