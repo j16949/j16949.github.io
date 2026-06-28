@@ -1,0 +1,140 @@
+---
+layout: post
+title:  更新至Jekyll4和一些随感
+date:   2026-06-28 13:35:00 +0800
+description: 将github.io或者说pages更新至Jekyll4,AI时代更新博客网站的随感 # Add post description (optional)
+img: great_ocean_road.jpeg # Add image post (optional)
+tags: [Blog, Jekyll, AI]
+author: Walter White # Add name author (optional)
+---
+<style type="text/css">
+p{ line-height: 170% }
+</style>
+<!--为表格样式添加边框-->
+
+
+>### 好久好久没更新网站了，AI时代更新博客网站的随感
+
+<br>
+<br>
+导航：
+
+1. [前言](#title1)
+2. [更新至Jekyll4](#title2)
+3. [后记](#title3)
+
+
+
+
+
+<span id="title1"></span>
+### 一. 前言
+
+距离上次更新网站已经过去五年多了，这几年变化是非常非常大，工作也变了，追求也变了，看问题的角度有了很多变化。特别是经历了老人的去世，又去西藏、欧洲和澳洲走走看看（配图是大洋路），再加上AI带来的对工作重新认识，还是印证了那句话：唯一不变的只有变化本身。
+
+<span id="title2"></span>
+### 二. 更新至Jekyll4
+
+#### 1.起因
+
+正是由于工作、生活和兴趣的变化，需要更新一下github.io的主页链接，原来链接的好多网站都不能访问了。但是在调试jekyll时发现无法运行，要安装很多包，运行命令也不同了。于是先问了chatgpt，说我的项目太老了，现在都开始用jekyll4了，已经不再用Gulp 3（就是我项目中的package.json和gulpfile.js），Gulp 3作为一个自动化任务工具其功能已经内置在jekyll4中了（然而在vscode的copilot对话中死活不让我删掉这些冗余的文件）。并且还建议我用astro重新构建网站，由于还存在学习成本，哪怕完全让AI做迁移也需要懂一些，还是决定先升级，不走新技术路线。
+
+#### 2.更新步骤
+
+这些操作是跟着豆包做的
+
+##### a.确认系统现有环境
+
+Jekyll 本身就是用 Ruby 写的，所以运行、构建博客必须装 Ruby。
+
+Ruby 是什么语言  
+Ruby 是 松本行弘（Matz） 1993 年设计的动态、解释型、面向对象脚本语言。  
+核心理念：程序员快乐优先，语法极度简洁、人性化。
+
+Ubuntu 源自带版本固定：  
+22.04：ruby 3.0  
+24.04：ruby 3.2  
+我的系统是ubuntu22.04,显示
+```bash
+bai@ubuntu:~/gitj16949/j16949.github.io$ ruby -v
+ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux-gnu]
+```
+Ruby 3.0 完全支持 Jekyll 4.x（4.0～4.4 全系列）  
+Jekyll 4.0～4.3：最低要求 Ruby ≥ 2.5  
+Jekyll 4.4.0+：最低要求 Ruby ≥ 2.7  
+Ruby 3.0 高于 2.7，满足所有 4.x 版本的门槛，官方兼容列表包含 Ruby 3.0/3.1/3.2/3.3。
+
+gem 是什么  
+Ruby 的软件包叫 gem，类似 Python 的 pip /npm 的 package。  
+jekyll、webrick、rouge 全都是 gem；  
+gem install jekyll：全局安装一个 Ruby 工具包。  
+问题：不同项目需要同一个 gem 的不同版本，全局安装会冲突。  
+于是诞生了 Bundler。  
+
+Bundle（Bundler）是什么  
+Bundle是 Ruby 项目依赖管理器，专门解决版本冲突。  
+对应文件：  
+Gemfile：手动写，声明项目需要哪些包、允许什么版本  
+Gemfile.lock：自动生成，锁定每一个依赖精确版本，所有人环境一致
+
+##### b.为项目创建环境
+
+首先切换至国内镜像
+```bash
+# 给bundler配置全局镜像，所有项目自动生效，无需改Gemfile
+bundle config set --global mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems
+# 同步修改gem全局源（gem install xxx也加速）
+gem sources --remove https://rubygems.org/
+gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/
+gem sources -l # 确认只剩清华源
+```
+
+同时需要修改 Gemfile
+```ruby
+# 原代码
+source "https://rubygems.org"
+
+# 替换为清华
+source "https://mirrors.tuna.tsinghua.edu.cn/rubygems"
+# 或阿里云
+# source "https://mirrors.aliyun.com/rubygems"
+```
+
+项目本地安装,进入博客项目目录执行：
+```bash
+# 清理旧缓存，重新安装
+bundle clean
+# 当前项目所有gem装到 ./vendor/bundle，完全隔离系统
+bundle config set --local path 'vendor/bundle'
+bundle install
+```
+
+##### c.运行调试项目
+进入项目文件夹，运行测试`bundle exec jekyll server --livereload`，结果如下为运行正常
+```bash
+bai@ubuntu:~/gitj16949/j16949.github.io$ bundle exec jekyll server --livereload
+Configuration file: /home/bai/gitj16949/j16949.github.io/_config.yml
+            Source: /home/bai/gitj16949/j16949.github.io
+       Destination: /home/bai/gitj16949/j16949.github.io/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+       Jekyll Feed: Generating feed for posts
+                    done in 0.517 seconds.
+ Auto-regeneration: enabled for '/home/bai/gitj16949/j16949.github.io'
+LiveReload address: http://127.0.0.1:35729
+    Server address: http://127.0.0.1:4000/
+  Server running... press ctrl-c to stop.
+        LiveReload: Browser connected
+```
+
+#### 3.其他
+
+我想在vscode中按F5调试，不管是问豆包还是copilot,折腾了半天都没调整好，无所谓了，反正是静态网站写博客用，也不存在代码调试，按照上面的命令在bash中运行测试就好了。
+
+<span id="title3"></span>
+### 三. 后记
+
+时代变化发展太快了，现在已经不再那么流行写博客，5G和存储的发展以让短视频成为更多人记录和发布的形式。而AI的出现，让很多技术文章减少了记录和阅读量，因为只要问AI就能快速获得针对你遇到的问题的专属答案和解决方式，虽然现在的AI都是基于attention is all you need论文而作的大语言模型，还不足够多面，但是已经能取代很多人和岗位，能做的已经很多很多。未来我是否还会更新博客，是否还要向着软件工程师的路努力，我不知道。我想此时此刻，能跟上时代就已足矣。
+
+
+
