@@ -1,4 +1,4 @@
-I",D<style type="text/css">
+I"4D<style type="text/css">
 p{ line-height: 170% }
 </style>
 
@@ -44,7 +44,7 @@ p{ line-height: 170% }
 <h4 id="2为图片的-html-节点添加-css-样式">2.为图片的 HTML 节点添加 CSS 样式</h4>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.image-cover-modal</span> <span class="p">{</span>
-    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
     <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
     <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
     <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
@@ -55,14 +55,14 @@ p{ line-height: 170% }
     <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
     <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
     <span class="nl">overflow</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">);</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.9</span><span class="p">);</span>
-    <span class="nl">transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="n">ease</span> <span class="m">0.3s</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">);</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.9</span><span class="p">);</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="nf">opacity</span> <span class="nb">ease</span> <span class="m">0.3s</span><span class="p">;</span>
     <span class="nl">pointer-events</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.model-shown</span> <span class="p">{</span>
-    <span class="nl">pointer-events</span><span class="p">:</span> <span class="n">all</span><span class="p">;</span>
+    <span class="nl">pointer-events</span><span class="p">:</span> <span class="nb">all</span><span class="p">;</span>
     <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -80,11 +80,11 @@ p{ line-height: 170% }
     <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
     <span class="nl">line-height</span><span class="p">:</span> <span class="m">3rem</span><span class="p">;</span>
     <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-    <span class="nl">color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
-    <span class="nl">background</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">0.33</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nx">#fff</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">0.33</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">45rem</span><span class="p">){</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="nb">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">45rem</span><span class="p">){</span>
     <span class="nc">.image-cover-modal-content</span> <span class="p">{</span>
         <span class="nl">max-width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
         <span class="nl">max-height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
@@ -95,24 +95,24 @@ p{ line-height: 170% }
 <h4 id="3添加放大图片的-js-脚本">3.添加放大图片的 JS 脚本</h4>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Get the DOM</span>
-<span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">image-cover-modal</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">modalImg</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-image</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">captionText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-caption</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">span</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-close</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">image-cover-modal</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">modalImg</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-image</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">captionText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-caption</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">span</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementsByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-close</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
 
 <span class="c1">// When the user clicks on &lt;span&gt; (x), close the modal</span>
 <span class="nx">modal</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">model-shown</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">model-shown</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
-<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">for </span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// Get the image and insert it inside the modal - use its "alt" text as a caption</span>
     <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">images</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
 
     <span class="nx">img</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-        <span class="nx">modal</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">model-shown</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">modal</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">model-shown</span><span class="dl">"</span><span class="p">);</span>
         <span class="nx">modalImg</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
         <span class="nx">captionText</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">alt</span><span class="p">;</span>
     <span class="p">}</span>
@@ -136,14 +136,14 @@ p{ line-height: 170% }
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;script&gt;</span>
 <span class="c1">// Get the DOM</span>
-<span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">image-cover-modal</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">modalImg</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-image</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">captionText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-caption</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">span</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-close</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">image-cover-modal</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">modalImg</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-image</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">captionText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-caption</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">span</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementsByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-cover-close</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
 
 <span class="c1">// When the user clicks on </span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span> <span class="p">(</span><span class="nx">x</span><span class="p">),</span> <span class="nx">close</span> <span class="nx">the</span> <span class="nx">modal</span>
 <span class="nx">modal</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">model-shown</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">model-shown</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
@@ -153,7 +153,7 @@ p{ line-height: 170% }
     <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">images</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
 
     <span class="nx">img</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-        <span class="nx">modal</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">model-shown</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">modal</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">model-shown</span><span class="dl">"</span><span class="p">);</span>
         <span class="nx">modalImg</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
         <span class="nx">captionText</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">alt</span><span class="p">;</span>
     <span class="p">}</span>

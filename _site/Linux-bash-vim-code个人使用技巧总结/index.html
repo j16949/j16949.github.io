@@ -117,29 +117,29 @@ p{ line-height: 170% }
 <p>可以看到最上方的图片使用了词云,代码如下：</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#wordCloud.py
-</span><span class="kn">import</span> <span class="nn">jieba</span>
-<span class="kn">import</span> <span class="nn">wordcloud</span>
-<span class="kn">from</span>  <span class="nn">imageio</span> <span class="kn">import</span> <span class="n">imread</span>
+</span><span class="kn">import</span> <span class="n">jieba</span>
+<span class="kn">import</span> <span class="n">wordcloud</span>
+<span class="kn">from</span>  <span class="n">imageio</span> <span class="kn">import</span> <span class="n">imread</span>
 <span class="c1">#中文
-</span><span class="s">'''mask=imread('fivestart.jpg')
-f=open('新时代中国特色社会主义.txt','r',encoding='utf-8')
+</span><span class="sh">'''</span><span class="s">mask=imread(</span><span class="sh">'</span><span class="s">fivestart.jpg</span><span class="sh">'</span><span class="s">)
+f=open(</span><span class="sh">'</span><span class="s">新时代中国特色社会主义.txt</span><span class="sh">'</span><span class="s">,</span><span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="s">,encoding=</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="s">)
 t=f.read()
 f.close()
 ls=jieba.lcut(t)
-txt=' '.join(ls)
-w=wordcloud.WordCloud(font_path='msyh.ttc',max_words=99,mask=mask,background_color='white')
+txt=</span><span class="sh">'</span><span class="s"> </span><span class="sh">'</span><span class="s">.join(ls)
+w=wordcloud.WordCloud(font_path=</span><span class="sh">'</span><span class="s">msyh.ttc</span><span class="sh">'</span><span class="s">,max_words=99,mask=mask,background_color=</span><span class="sh">'</span><span class="s">white</span><span class="sh">'</span><span class="s">)
 w.generate(txt)
-w.to_file('grwordcloud.png')'''</span>
+w.to_file(</span><span class="sh">'</span><span class="s">grwordcloud.png</span><span class="sh">'</span><span class="s">)</span><span class="sh">'''</span>
 
 <span class="c1">#英文
-</span><span class="n">mask</span><span class="o">=</span><span class="n">imread</span><span class="p">(</span><span class="s">'sun.jpg'</span><span class="p">)</span>
+</span><span class="n">mask</span><span class="o">=</span><span class="nf">imread</span><span class="p">(</span><span class="sh">'</span><span class="s">sun.jpg</span><span class="sh">'</span><span class="p">)</span>
 <span class="c1">#f=open('words.txt','r')
 #t=f.read()
 #f.close()
-</span><span class="n">t</span><span class="o">=</span><span class="s">'Linux,bash,vim,code'</span>
-<span class="n">w</span><span class="o">=</span><span class="n">wordcloud</span><span class="p">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">max_words</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">background_color</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span><span class="n">collocations</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">repeat</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">w</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="n">w</span><span class="p">.</span><span class="n">to_file</span><span class="p">(</span><span class="s">'wordcloud.jpg'</span><span class="p">)</span></code></pre></figure>
+</span><span class="n">t</span><span class="o">=</span><span class="sh">'</span><span class="s">Linux,bash,vim,code</span><span class="sh">'</span>
+<span class="n">w</span><span class="o">=</span><span class="n">wordcloud</span><span class="p">.</span><span class="nc">WordCloud</span><span class="p">(</span><span class="n">max_words</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">background_color</span><span class="o">=</span><span class="sh">'</span><span class="s">white</span><span class="sh">'</span><span class="p">,</span><span class="n">collocations</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">repeat</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">w</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">w</span><span class="p">.</span><span class="nf">to_file</span><span class="p">(</span><span class="sh">'</span><span class="s">wordcloud.jpg</span><span class="sh">'</span><span class="p">)</span></code></pre></figure>
 
 <blockquote>
   <p>!!!如果想让一个词重复多次，需要设置 <code class="language-plaintext highlighter-rouge">wordcloud.WordCloud(repeat=True)</code> !!!</p>
@@ -163,9 +163,9 @@ w.to_file('grwordcloud.png')'''</span>
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=Linux bash vim code 个人使用技巧总结&url=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=Linux bash vim code 个人使用技巧总结&url=/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=/Linux-bash-vim-code%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">
@@ -282,7 +282,7 @@ w.to_file('grwordcloud.png')'''</span>
   <footer class="main-footer">
   <div class="copyright">
   	<p>
-  		2024 &copy; Walter White    
+  		2026 &copy; Walter White    
   		
   		<a class="github" href="http://github.com/j16949" target="_blank"><i class="fa fa-github"></i></a>
   		

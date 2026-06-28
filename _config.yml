@@ -43,4 +43,9 @@ plugins:
   - jekyll-sitemap
 
 include: [_pages]
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+exclude: ["node_modules", "yarn.lock"]
+
+# SCSS/CSS build settings (Jekyll 4.0+ native support)
+sass:
+  sass_dir: assets/css/sass
+  style: compressed
